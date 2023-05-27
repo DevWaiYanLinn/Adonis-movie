@@ -25,7 +25,7 @@
               />
             </svg>
           </div>
-          <span class="ml-2 text-purple-400 font-bold">Dashboard</span>
+          <span class="ml-2 font-bold text-gray-400" :class="{'text-purple-400': (/^\/admin$/).test($page.url)}">Dashboard</span>
         </inertia-link>
       </li>
       <li>
@@ -49,12 +49,12 @@
               />
             </svg>
           </div>
-          <span class="ml-2 text-gray-400 font-bold">Cinemas Mangement</span>
+          <span class="ml-2 text-gray-400 font-bold" :class="{'text-purple-400': (/\/admin\/cinemas.*/).test($page.url)}">Cinemas Mangement</span>
         </inertia-link>
       </li>
       <li>
         <inertia-link
-          href="/admin/cinemas/create"
+          href="/admin/users"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
@@ -73,7 +73,7 @@
               />
             </svg>
           </div>
-          <span class="ml-2 text-gray-400 font-bold">Users Mangement</span>
+          <span class="ml-2 text-gray-400 font-bold" :class="{'text-purple-400': (/\/admin\/users.*/).test($page.url) }">Users Mangement</span>
         </inertia-link>
       </li>
       <li>
@@ -100,6 +100,7 @@
           <span
             class="ml-2 text-gray-400 font-bold"
             title="Permission Management"
+            :class="{'text-purple-400': (/\/admin\/roles.*/).test($page.url)}"
             >Role Mangement</span
           >
         </inertia-link>

@@ -29,7 +29,12 @@ Route.group(() => {
   Route.get("/cinemas/create", "CinemasController.create");
   Route.get("/halls", "HallsController.index");
   Route.get("/halls/:id", "HallsController.show");
+
+
+  Route.get('/users', 'UsersController.index');
+
   Route.get('/roles/create', "RolesController.create")
+  Route.get('/roles', 'RolesController.index')
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");

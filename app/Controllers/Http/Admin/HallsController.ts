@@ -2,7 +2,7 @@ import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import prisma from "../../../../start/prisma";
 
 export default class HallsController {
-  public async index({ inertia }: HttpContextContract) {
+  public async index({}: HttpContextContract) {
     return await prisma.hall.findUnique({
       where: {
         id: "646cecf6441700f1a695cabf",

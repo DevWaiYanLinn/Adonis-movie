@@ -1,0 +1,1 @@
+{"version":3,"file":"RolesController.js","sourceRoot":"","sources":["../../../../../app/Controllers/Http/Admin/RolesController.ts"],"names":[],"mappings":";;AAEA,MAAqB,eAAe;IAC3B,KAAK,CAAC,EAAE,OAAO,EAAuB;QAC3C,OAAO,OAAO,CAAC,MAAM,CAAC,oBAAoB,CAAC,CAAC;IAC9C,CAAC;IAEM,MAAM,CAAC,EAAE,OAAO,EAAuB;QAC5C,OAAO,OAAO,CAAC,MAAM,CAAC,oBAAoB,CAAC,CAAC;IAC9C,CAAC;CACF;AARD,kCAQC"}

@@ -1,0 +1,162 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type Location {
+  address String
+  city    String
+  country String?
+}
+
+type SeatsAvailable {
+  id     String @db.ObjectId
+  row    Int
+  number Int
+  hallId String @db.ObjectId
+  color  String
+  price  Int
+}
+
+type BookingSeats {
+  id     String @db.ObjectId
+  row    Int
+  number Int
+  hallId String @db.ObjectId
+  color  String
+  price  Int
+}
+
+model Role {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  name         String       @unique
+  permissinIDs String[]     @db.ObjectId
+  permissions  Permission[] @relation(fields: [permissinIDs], references: [id])
+  userIDs      String[]     @db.ObjectId
+  users        User[]       @relation(fields: [userIDs], references: [id])
+  createdAt    DateTime     @default(now()) @db.Timestamp
+  updatedAt    DateTime     @updatedAt @db.Timestamp
+}
+
+model Permission {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  roleIDs   String[] @db.ObjectId
+  roles     Role[]   @relation(fields: [roleIDs], references: [id])
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @updatedAt @db.Timestamp
+}
+
+model User {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  email           String   @unique
+  name            String?
+  password        String
+  rememberMeToken String?
+  roleIDs         String[] @db.ObjectId
+  roles           Role[]   @relation(fields: [roleIDs], references: [id])
+  createdAt       DateTime @default(now()) @db.Timestamp
+  updatedAt       DateTime @updatedAt @db.Timestamp
+}
+
+model Cinema {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  location  Location
+  name      String     @unique
+  halls     Hall[]
+  showTime  ShowTime[]
+  createdAt DateTime   @default(now()) @db.Timestamp
+  updatedAt DateTime   @updatedAt @db.Timestamp
+}
+
+model Row {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  rowNumber String
+  color     String
+  price     Int
+  hall      Hall     @relation(fields: [hallID], references: [id])
+  hallID    String   @db.ObjectId
+  seats     Seat[]
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @updatedAt @db.Timestamp
+}
+
+model Seat {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  seatNumber       String
+  price            String?
+  color            String?
+  row              Row                @relation(fields: [rowID], references: [id])
+  rowID            String             @db.ObjectId
+  SeatAvailability SeatAvailability[]
+  createdAt        DateTime           @default(now()) @db.Timestamp
+  updatedAt        DateTime           @updatedAt @db.Timestamp
+}
+
+model Hall {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String     @unique
+  cinema    Cinema     @relation(fields: [cinemaID], references: [id])
+  cinemaID  String     @db.ObjectId
+  showTime  ShowTime[]
+  rows      Row[]
+  createdAt DateTime   @default(now()) @db.Timestamp
+  updatedAt DateTime   @updatedAt @db.Timestamp
+}
+
+model SeatAvailability {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  date        DateTime
+  isAvaliable Boolean
+  seat        Seat     @relation(fields: [seatID], references: [id])
+  seatID      String   @db.ObjectId
+  showTime    ShowTime @relation(fields: [showTimeID], references: [id])
+  showTimeID  String   @db.ObjectId
+  createdAt   DateTime @default(now()) @db.Timestamp
+  updatedAt   DateTime @updatedAt @db.Timestamp
+}
+
+model Movie {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  genre       String
+  duration    String
+  director    String
+  cast        String?
+  description String?
+  showTime    ShowTime[]
+  releaseDate String?
+  createdAt   DateTime   @default(now()) @db.Timestamp
+  updatedAt   DateTime   @updatedAt @db.Timestamp
+}
+
+model ShowTime {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  cinemaID         String             @db.ObjectId
+  cinema           Cinema             @relation(fields: [cinemaID], references: [id])
+  hallID           String             @db.ObjectId
+  hall             Hall               @relation(fields: [hallID], references: [id])
+  movieID          String             @db.ObjectId
+  movie            Movie              @relation(fields: [movieID], references: [id])
+  seats_available  SeatsAvailable[]
+  booking          Booking[]
+  seatAvailability SeatAvailability[]
+  movieTime        DateTime
+  createdAt        DateTime           @default(now()) @db.Timestamp
+  updatedAt        DateTime           @updatedAt @db.Timestamp
+}
+
+model Booking {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  showTimeID   String         @db.ObjectId
+  showTime     ShowTime       @relation(fields: [showTimeID], references: [id])
+  bookingSeats BookingSeats[]
+  createdAt    DateTime       @default(now()) @db.Timestamp
+  updatedAt    DateTime       @updatedAt @db.Timestamp
+}

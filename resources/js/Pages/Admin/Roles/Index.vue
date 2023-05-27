@@ -1,7 +1,6 @@
 <template>
-  <div class="text-gray-500">
-    <user-page-tab/>
-    <!-- component -->
+  <div>
+    <role-page-tab />
     <div class="antialiased font-sans bg-gray-200">
       <div class="my-2 flex sm:flex-row flex-col">
         <div class="flex flex-row mb-1 sm:mb-0">
@@ -254,11 +253,10 @@
     </div>
   </div>
 </template>
-
 <script>
-import UserPageTab from "@/Pages/Admin/Users/components/UserPageTab.vue";
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
 import { useToast } from "vue-toastification";
+import RolePageTab from "@/Pages/Admin/Roles/components/RolePageTab.vue";
 export default {
   layout: AdminLayout,
 };
@@ -269,3 +267,4 @@ const createCinema = () => {
   toast.success("Hello Toast", {});
 };
 </script>
+

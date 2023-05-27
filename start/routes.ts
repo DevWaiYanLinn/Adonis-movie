@@ -32,9 +32,12 @@ Route.group(() => {
 
 
   Route.get('/users', 'UsersController.index');
+  Route.get('/users/create', 'UsersController.create')
 
   Route.get('/roles/create', "RolesController.create")
   Route.get('/roles', 'RolesController.index')
+
+  Route.get('/threaters', 'ThreatersController.index')
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");

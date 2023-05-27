@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import userSeeder from "./userSeeder";
 import cinemaSeeder from "./ciniemaSeeder";
 import hallSeeder from "./hallSeeder";
+import roleSeeder from './roleSeeder';
+import permissionSeeder from './permissionSeeder';
 // import dummy from "./dummy";
 const prisma = new PrismaClient();
 async function main() {
@@ -9,6 +11,8 @@ async function main() {
     await userSeeder(prisma);
     await cinemaSeeder(prisma);
     await hallSeeder(prisma);
+    await roleSeeder(prisma);
+    await permissionSeeder(prisma);
     return true;
   } catch (error) {
     throw error;

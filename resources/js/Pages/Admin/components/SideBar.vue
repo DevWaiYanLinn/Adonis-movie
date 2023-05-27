@@ -25,7 +25,11 @@
               />
             </svg>
           </div>
-          <span class="ml-2 font-bold text-gray-400" :class="{'text-purple-400': (/^\/admin$/).test($page.url)}">Dashboard</span>
+          <span
+            class="ml-2 font-bold text-md text-gray-400"
+            :class="{ 'text-purple-400': /^\/admin$/.test($page.url) }"
+            >Dashboard</span
+          >
         </inertia-link>
       </li>
       <li>
@@ -49,7 +53,38 @@
               />
             </svg>
           </div>
-          <span class="ml-2 text-gray-400 font-bold" :class="{'text-purple-400': (/\/admin\/cinemas.*/).test($page.url)}">Cinemas Mangement</span>
+          <span
+            class="ml-2 text-gray-400 text-md font-bold"
+            :class="{ 'text-purple-400': /\/admin\/cinemas.*/.test($page.url) }"
+            >Cinemas Mangement</span
+          >
+        </inertia-link>
+      </li>
+      <li>
+        <inertia-link
+          href="/admin/threaters"
+          class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
+        >
+          <div class="p-2 shadow-lg rounded-lg bg-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 text-pink-400"
+            >
+              <path
+                stroke-linecap="round"
+                d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+              />
+            </svg>
+          </div>
+          <span
+            class="ml-2 text-gray-400 text-md font-bold"
+            :class="{ 'text-purple-400': /\/admin\/threaters.*/.test($page.url) }"
+            >Threaters Mangement</span
+          >
         </inertia-link>
       </li>
       <li>
@@ -73,7 +108,11 @@
               />
             </svg>
           </div>
-          <span class="ml-2 text-gray-400 font-bold" :class="{'text-purple-400': (/\/admin\/users.*/).test($page.url) }">Users Mangement</span>
+          <span
+            class="ml-2 text-gray-400 text-md font-bold"
+            :class="{ 'text-purple-400': /\/admin\/users.*/.test($page.url) }"
+            >Users Mangement</span
+          >
         </inertia-link>
       </li>
       <li>
@@ -100,7 +139,7 @@
           <span
             class="ml-2 text-gray-400 font-bold"
             title="Permission Management"
-            :class="{'text-purple-400': (/\/admin\/roles.*/).test($page.url)}"
+            :class="{ 'text-purple-400': /\/admin\/roles.*/.test($page.url) }"
             >Role Mangement</span
           >
         </inertia-link>
@@ -127,7 +166,7 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-gray-400 font-bold"
+            class="ml-2 text-md text-gray-400 font-bold"
             title="Permission Management"
             >Permissions Mange....</span
           >

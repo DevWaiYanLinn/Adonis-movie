@@ -1,7 +1,6 @@
 <template>
-  <div class="text-gray-500">
-    <user-page-tab/>
-    <!-- component -->
+  <div>
+    <page-tab :tabs="tabs" />
     <div class="antialiased font-sans bg-gray-200">
       <div class="my-2 flex sm:flex-row flex-col">
         <div class="flex flex-row mb-1 sm:mb-0">
@@ -254,18 +253,25 @@
     </div>
   </div>
 </template>
-
 <script>
-import UserPageTab from "@/Pages/Admin/Users/components/UserPageTab.vue";
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
-import { useToast } from "vue-toastification";
 export default {
   layout: AdminLayout,
 };
 </script>
 <script setup>
-const toast = useToast();
-const createCinema = () => {
-  toast.success("Hello Toast", {});
-};
+import PageTab from "@/Pages/Admin/components/PageTab.vue";
+
+const tabs = [
+  {
+    url: "/admin/threaters",
+    rule: /^\/admin\/threaters\/create$/,
+    label: "Create",
+  },
+  {
+    url: "/admin/threaters/create",
+    rule: /^\/admin\/threaters(\?.*)?$/,
+    label: "Lists",
+  },
+];
 </script>

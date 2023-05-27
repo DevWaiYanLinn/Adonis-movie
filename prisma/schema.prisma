@@ -47,6 +47,7 @@ model Role {
 
 model Permission {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @unique
   roleIDs   String[] @db.ObjectId
   roles     Role[]   @relation(fields: [roleIDs], references: [id])
   createdAt DateTime @default(now()) @db.Timestamp

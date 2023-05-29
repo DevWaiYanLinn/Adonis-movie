@@ -1,5 +1,5 @@
 {
-  "typescript": true,
+  "typescript": false,
   "commands": [
     "./commands",
     "@adonisjs/core/build/commands/index.js",
@@ -58,5 +58,6 @@
   },
   "testProviders": [
     "@japa/preset-adonis/TestsProvider"
-  ]
+  ],
+  "lastCompiledAt": "2023-05-29T04:01:02.651Z"
 }

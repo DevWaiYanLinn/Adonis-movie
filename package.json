@@ -1,0 +1,62 @@
+{
+  "name": "adonis_movie",
+  "version": "1.0.0",
+  "private": true,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "scripts": {
+    "dev": "node ace serve --watch",
+    "build": "node ace build --production",
+    "start": "node server.js",
+    "test": "node ace test",
+    "db:seed":"prisma db seed",
+    "db:push":"prisma db push"
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^5.9.5",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@japa/preset-adonis": "^1.2.0",
+    "@japa/runner": "^2.5.1",
+    "@symfony/webpack-encore": "^4.1.1",
+    "@types/node": "^20.2.1",
+    "@types/proxy-addr": "^2.0.0",
+    "@types/source-map-support": "^0.5.6",
+    "adonis-preset-ts": "^2.1.0",
+    "autoprefixer": "^10.4.14",
+    "pino-pretty": "^10.0.0",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "prisma": "^4.14.1",
+    "tailwindcss": "^3.3.2",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.6",
+    "vue-loader": "^17.1.1",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^4.10.0",
+    "youch": "^3.2.3",
+    "youch-terminal": "^2.2.0"
+  },
+  "dependencies": {
+    "@adonisjs/auth": "^8.2.3",
+    "@adonisjs/core": "^5.9.0",
+    "@adonisjs/repl": "^3.1.11",
+    "@adonisjs/session": "^6.4.0",
+    "@adonisjs/shield": "^7.1.0",
+    "@adonisjs/view": "^6.2.0",
+    "@eidellev/inertia-adonisjs": "^8.0.1",
+    "@inertiajs/vue3": "^1.0.7",
+    "@prisma/client": "^4.14.1",
+    "@vue/server-renderer": "^3.3.4",
+    "bson": "^5.3.0",
+    "mongodb": "^5.5.0",
+    "phc-argon2": "^1.1.4",
+    "proxy-addr": "^2.0.7",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.21",
+    "vue": "^3.3.4",
+    "vue-toastification": "^2.0.0-rc.5",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

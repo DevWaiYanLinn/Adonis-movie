@@ -26,25 +26,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const prisma_1 = __importDefault(require("../start/prisma"));
 class AppProvider {
     constructor(app) {
         this.app = app;
-        this.prisma = prisma_1.default;
     }
     register() {
     }
     async boot() { }
     async ready() {
-        const Auth = this.app.container.resolveBinding("Adonis/Addons/Auth");
-        const Hash = this.app.container.resolveBinding("Adonis/Core/Hash");
-        const { PrismaAuthProvider } = await Promise.resolve().then(() => __importStar(require("./PrismaProvider/index")));
-        Auth.extend("provider", "prisma", (_, __, config) => {
-            return new PrismaAuthProvider(config, Hash, this.prisma);
-        });
     }
     async shutdown() {
-        await this.prisma.$disconnect();
     }
 }
 exports.default = AppProvider;

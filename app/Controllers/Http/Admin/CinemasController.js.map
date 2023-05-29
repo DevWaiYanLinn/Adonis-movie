@@ -1,1 +1,0 @@
-{"version":3,"file":"CinemasController.js","sourceRoot":"","sources":["../../../../../app/Controllers/Http/Admin/CinemasController.ts"],"names":[],"mappings":";;AAEA,MAAqB,iBAAiB;IAC7B,KAAK,CAAC,MAAM,CAAC,EAAE,OAAO,EAAuB;QAClD,OAAO,OAAO,CAAC,MAAM,CAAC,sBAAsB,CAAC,CAAC;IAChD,CAAC;CACF;AAJD,oCAIC"}

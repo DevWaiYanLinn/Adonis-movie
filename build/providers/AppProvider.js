@@ -44,7 +44,7 @@ class AppProvider {
         });
     }
     async shutdown() {
-        await prisma_1.default.$disconnect();
+        await this.prisma.$disconnect();
     }
 }
 exports.default = AppProvider;

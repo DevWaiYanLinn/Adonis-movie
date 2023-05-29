@@ -7,12 +7,16 @@ const client_1 = require("@prisma/client");
 const userSeeder_1 = __importDefault(require("./userSeeder"));
 const ciniemaSeeder_1 = __importDefault(require("./ciniemaSeeder"));
 const hallSeeder_1 = __importDefault(require("./hallSeeder"));
+const roleSeeder_1 = __importDefault(require("./roleSeeder"));
+const permissionSeeder_1 = __importDefault(require("./permissionSeeder"));
 const prisma = new client_1.PrismaClient();
 async function main() {
     try {
         await (0, userSeeder_1.default)(prisma);
         await (0, ciniemaSeeder_1.default)(prisma);
         await (0, hallSeeder_1.default)(prisma);
+        await (0, roleSeeder_1.default)(prisma);
+        await (0, permissionSeeder_1.default)(prisma);
         return true;
     }
     catch (error) {

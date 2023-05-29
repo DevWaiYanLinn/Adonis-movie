@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class RolesController {
     index({ inertia }) {
-        return inertia.render("Admin/Roles/Create");
+        return inertia.render("Admin/Roles/Index");
     }
     create({ inertia }) {
         return inertia.render("Admin/Roles/Create");

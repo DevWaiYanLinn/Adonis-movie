@@ -13,8 +13,10 @@ Route_1.default.group(() => {
     Route_1.default.get("/halls", "HallsController.index");
     Route_1.default.get("/halls/:id", "HallsController.show");
     Route_1.default.get('/users', 'UsersController.index');
+    Route_1.default.get('/users/create', 'UsersController.create');
     Route_1.default.get('/roles/create', "RolesController.create");
     Route_1.default.get('/roles', 'RolesController.index');
+    Route_1.default.get('/threaters', 'ThreatersController.index');
 })
     .prefix("/admin")
     .namespace("App/Controllers/Http/Admin");

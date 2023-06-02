@@ -63,7 +63,7 @@
       <li>
         <inertia-link
           href="/admin/threaters"
-          class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
+          class="flex items-center pointer-events-none opacity-50 cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
             <svg

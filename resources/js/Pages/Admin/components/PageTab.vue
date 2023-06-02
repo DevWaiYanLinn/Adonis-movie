@@ -7,7 +7,7 @@
       type="button"
       class="text-gray-400 flex items-end rounded-lg bg-white hover:bg-indigo-50 focus:border-indigo-300 px-2 py-1 text-sm"
       :class="{
-        '!text-white !bg-purple-400': tab.rule.test($page.url),
+        '!text-white !bg-purple-400': rule.startsWith($page.url),
       }"
     >
       <span class="mr-1">{{ tab.label }}</span>

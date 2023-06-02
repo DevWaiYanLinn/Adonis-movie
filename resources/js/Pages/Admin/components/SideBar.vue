@@ -89,7 +89,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/users"
+          href="/admin/users/create"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">

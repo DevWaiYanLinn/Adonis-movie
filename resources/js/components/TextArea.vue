@@ -6,11 +6,11 @@
   >
     {{ propsRef.label }}
   </label>
-    <input
+    <textarea
        autocomplete="off"
        v-bind="propsRef"
        v-model="inputRef" @input="$emit('update:modelValue', $event.target.value)"
-       class="focus:outline-none focus:outline-purple-400 appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" />
+       class="focus:outline-none focus:outline-purple-400 appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"></textarea>
     <p class="text-red-500 text-xs italic">{{ error }}</p>
   </div>
 </template>
@@ -33,6 +33,10 @@ const { error, ...props } = defineProps({
   id: {
     type: String,
   },
+  rows:{
+    type: String,
+    default:'6'
+  }
 })
 const inputRef = ref('');
 const propsRef = toRef(props)

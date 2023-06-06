@@ -20,8 +20,8 @@
 
 import Route from "@ioc:Adonis/Core/Route";
 
-Route.get("/", async ({ inertia }) => {
-  return inertia.render("Home");
+Route.get("/", async ({ response }) => {
+  return response.redirect('/admin/auth/login')
 });
 
 Route.group(() => {
@@ -35,9 +35,17 @@ Route.group(() => {
   Route.get('/users/create', 'UsersController.create')
 
   Route.get('/roles/create', "RolesController.create")
-  Route.get('/roles', 'RolesController.index')
+  Route.get('/roles', 'RolesController.index');
+
+  Route.get('/cinemas/:cinema_id/halls/:hall_id/seats', 'SeatsController.index')
 
   Route.get('/threaters', 'ThreatersController.index')
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");
+
+
+Route.group(() =>{
+  Route.get('/login', 'AuthController.login')
+}).prefix("/admin/auth")
+.namespace("App/Controllers/Http/Admin/Auth");

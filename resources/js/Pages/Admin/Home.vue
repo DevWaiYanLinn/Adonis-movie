@@ -55,6 +55,14 @@
       </div>
     </a>
   </div>
+  <div class="grid grid-cols-5 gap-4 mt-5">
+    <div class="p-8 col-span-3 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px] ">
+      <BarChart/>
+    </div>
+    <div class="p-8 col-span-2 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px] ">
+      <DoughnutChart/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -62,4 +70,9 @@ import AdminLayout from "@/PageLayout/AdminLayout.vue";
 export default {
   layout: AdminLayout,
 };
+</script>
+
+<script setup>
+import BarChart from '@/components/Charts/BarChart.vue'
+import DoughnutChart from '@/components/Charts/DoughnutChart.vue'
 </script>

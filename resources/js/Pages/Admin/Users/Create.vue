@@ -21,7 +21,7 @@
         </svg>
       </page-tab>
       <page-tab
-        label="lists"
+        label="Lists"
         url="/admin/users"
       >
         <svg
@@ -61,7 +61,7 @@
       </page-tab>
     </div>
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
-      <div class="md:flex -mx-3 mb-6">
+      <div class="md:flex -mx-3 mb-5">
         <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
           <text-field
             label="First Name"
@@ -75,31 +75,32 @@
           />
         </div>
       </div>
-      <div class="-mx-3 md:flex mb-6">
-        <div class="md:w-full mx-3">
-          <text-field
+      <div class="-mx-3 md:flex mb-5">
+        <div class="md:w-1/2 mx-3">
+          <TextField
+            label="email"
+            type="email"
+            placeholder="user@email.com"
+          />
+        </div>
+        <div class="md:w-1/2 mx-3">
+          <TextField
             label="password"
             type="password"
-            placeholder="*****************"
+            placeholder="**********"
           />
         </div>
       </div>
-      <div class="-mx-3 mb-6">
+      <div class="-mx-3 mb-5">
         <div class="mx-3">
           <select-options label="Role" />
         </div>
       </div>
-      <div class="-mx-3 md:flex mb-6">
-        <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
-          <text-field
+      <div class="-mx-3 md:flex mb-5">
+        <div class="md:w-full mx-3 mb-6 md:mb-0">
+          <TextArea
             label="Address"
-            placeholder="Yangon"
-          />
-        </div>
-        <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
-          <text-field
-            label="City"
-            placeholder="Yangon"
+            placeholder="Yangon,...."
           />
         </div>
       </div>
@@ -117,6 +118,7 @@ import AdminLayout from "@/PageLayout/AdminLayout.vue";
 import UserPageTab from "@/Pages/Admin/Users/components/UserPageTab.vue";
 import { useToast } from "vue-toastification";
 import TextField from '@/components/TextField.vue'
+import TextArea from '@/components/TextArea.vue'
 import PageTab from "@/components/PageTab.vue";
 import SelectOptions from '@/components/Select.vue'
 export default {

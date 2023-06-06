@@ -62,18 +62,21 @@ model User {
   rememberMeToken String?
   roleIDs         String[] @db.ObjectId
   roles           Role[]   @relation(fields: [roleIDs], references: [id])
+  status          Boolean  @default(true)
   createdAt       DateTime @default(now()) @db.Timestamp
   updatedAt       DateTime @updatedAt @db.Timestamp
 }
 
 model Cinema {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  location  Location
-  name      String     @unique
-  halls     Hall[]
-  showTime  ShowTime[]
-  createdAt DateTime   @default(now()) @db.Timestamp
-  updatedAt DateTime   @updatedAt @db.Timestamp
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String     @unique
+  halls       Hall[]
+  showTime    ShowTime[]
+  address     String
+  city        String
+  phoneNumber String[]
+  createdAt   DateTime   @default(now()) @db.Timestamp
+  updatedAt   DateTime   @updatedAt @db.Timestamp
 }
 
 model Row {

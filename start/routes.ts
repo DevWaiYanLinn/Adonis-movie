@@ -39,6 +39,8 @@ Route.group(() => {
 
   Route.get('/cinemas/:cinema_id/halls/:hall_id/seats', 'SeatsController.index')
 
+  Route.get('/movies/create', 'MoviesController.create')
+
   Route.get('/threaters', 'ThreatersController.index')
 })
   .prefix("/admin")

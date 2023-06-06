@@ -5,31 +5,27 @@ const cinemaSeeder = async (prisma: PrismaClient) => {
     data: [
       {
         name: "Adonis Ace",
-        location: {
-          city: "Yangon",
-          address: "Yangon",
-        },
+        city: "Yangon",
+        address: "Adonis Center, Tamwe Township, Yangon",
+        phoneNumber:'09792954192'
       },
       {
         name: "Adonis Mega",
-        location: {
-          city: "Yangon",
-          address: "Yangon",
-        },
+        city: "Yangon",
+        address: "Adonis Hyper Market, Thaketa Township, Yangon",
+        phoneNumber:'09792954192'
       },
       {
         name: "Adonis Alpha",
-        location: {
-          city: "Yangon",
-          address: "Yangon",
-        },
+        city: "Mandalay",
+        address: "Alpa Shopping Center, Chan Mya Thar Si, Mandalay",
+        phoneNumber:'09792954192'
       },
       {
-        name: "Adonis Palnet",
-        location: {
-          city: "Yangon",
-          address: "Yangon",
-        },
+        name: "Adonis Beta",
+        city: "Yangon",
+        address: "Beta Shopping Mall, Yangon",
+        phoneNumber:'09792954192'
       },
     ],
   });

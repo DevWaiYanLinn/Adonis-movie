@@ -5,7 +5,7 @@
       <div
         class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2"
       >
-        <div class="-mx-3 md:flex mb-6">
+        <div class="-mx-3 md:flex px-3 mb-6">
           <TextField :id="0" placeholder="Admin" label="Role" :value="role"/>
         </div>
         <div class="mb-5">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="flex justify-end items-center">
-          <button class="px-5 py-2 rounded-md text-white bg-green-600">
+          <button class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400">
             Create
           </button>
         </div>

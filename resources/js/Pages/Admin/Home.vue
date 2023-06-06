@@ -55,12 +55,16 @@
       </div>
     </a>
   </div>
-  <div class="grid grid-cols-5 gap-4 mt-5">
-    <div class="p-8 col-span-3 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px] ">
-      <BarChart/>
+  <div class="grid grid-cols-7 gap-5 mt-5">
+    <div
+      class="p-8 col-span-4 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px]"
+    >
+      <BarChart />
     </div>
-    <div class="p-8 col-span-2 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px] ">
-      <DoughnutChart/>
+    <div
+      class="p-8 col-span-3 shadow-md rounded-lg bg-white [&>canvas]:!h-[450px]"
+    >
+      <DoughnutChart />
     </div>
   </div>
 </template>
@@ -73,6 +77,6 @@ export default {
 </script>
 
 <script setup>
-import BarChart from '@/components/Charts/BarChart.vue'
-import DoughnutChart from '@/components/Charts/DoughnutChart.vue'
+import BarChart from "@/components/Charts/BarChart.vue";
+import DoughnutChart from "@/components/Charts/DoughnutChart.vue";
 </script>

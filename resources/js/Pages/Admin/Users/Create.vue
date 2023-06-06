@@ -115,7 +115,6 @@
 
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
-import UserPageTab from "@/Pages/Admin/Users/components/UserPageTab.vue";
 import { useToast } from "vue-toastification";
 import TextField from '@/components/TextField.vue'
 import TextArea from '@/components/TextArea.vue'

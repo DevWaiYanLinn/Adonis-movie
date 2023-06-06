@@ -4,6 +4,7 @@ import cinemaSeeder from "./ciniemaSeeder";
 import hallSeeder from "./hallSeeder";
 import roleSeeder from './roleSeeder';
 import permissionSeeder from './permissionSeeder';
+import rowAndSeatSeeder from "./rowAndSeatSeeder";
 // import dummy from "./dummy";
 const prisma = new PrismaClient();
 async function main() {
@@ -13,6 +14,7 @@ async function main() {
     await hallSeeder(prisma);
     await roleSeeder(prisma);
     await permissionSeeder(prisma);
+    await rowAndSeatSeeder(prisma);
     return true;
   } catch (error) {
     throw error;

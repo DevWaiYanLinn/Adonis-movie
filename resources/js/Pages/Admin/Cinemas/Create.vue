@@ -88,14 +88,19 @@
       </div>
     </div>
   </div>
-</template>
 
+
+ <!--<employee-card :showModal="true"></employee-card>-->
+
+
+</template>
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
 import TextField from '@/components/TextField.vue'
 import TextArea from '@/components/TextArea.vue'
 import PageTab from "@/components/PageTab.vue";
 import { useToast } from "vue-toastification";
+import EmployeeCard from "@/components/Modals/EmployeeCard.vue"
 export default {
   layout: AdminLayout,
 };

@@ -11,7 +11,7 @@
       autocomplete="off"
       v-bind="propsRef"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="focus:outline-none focus:border-purple-400 appearance-none block w-full border rounded py-3 px-4 mb-3"
+      class="focus:outline-none focus:border-purple-400 appearance-none block w-full rounded py-3 px-4 border-2"
       :class="{'border-red-500 focus:outline-transparent': error}"
     />
     <p class="text-red-500 text-xs italic">{{ error }}</p>

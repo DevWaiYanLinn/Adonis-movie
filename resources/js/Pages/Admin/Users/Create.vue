@@ -90,23 +90,31 @@
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-1/2 mx-3">
-          <DatePicker />
+          <DatePicker label="Date Of Birth" id="date-of-birth" />
         </div>
         <div class="md:w-1/2 mx-3">
-          <!-- <TextField
-            v-model="form.password"
-            label="password"
-            type="password"
-            placeholder="**********"
-          /> -->
+          <SelectOptions label="Gender" v-model="form.role">
+            <option value="">Select Gender</option>
+            <option v-for="gender in genders" :key="gender" :value="gender">
+              {{ gender }}
+            </option>
+          </SelectOptions>
         </div>
       </div>
-      <div class="-mx-3 mb-5">
-        <div class="mx-3">
+      <div class="-mx-3 mb-5 md:flex">
+        <div class="mx-3 md:w-1/2">
           <SelectOptions label="Role" v-model="form.role">
             <option value="">Select Role</option>
             <option v-for="role in roles" :key="role.id" :value="role.id">
               {{ role.name }}
+            </option>
+          </SelectOptions>
+        </div>
+        <div class="mx-3 md:w-1/2">
+          <SelectOptions label="Ciemas" >
+            <option value="">Select Cinema</option>
+            <option v-for="cinema in cinemas" :key="cinema.id" :value="cinema.id">
+              {{ cinema.name }}
             </option>
           </SelectOptions>
         </div>
@@ -124,7 +132,7 @@
         <button
           class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400"
         >
-          Create
+          REGISTER
         </button>
       </div>
     </form>
@@ -145,7 +153,7 @@ export default {
 </script>
 <script setup>
 import { ref } from "vue";
-const { roles } = defineProps(["roles"]);
+const { roles, gendersm, cinemas } = defineProps(["roles", "genders", 'cinemas']);
 import { useForm } from "@inertiajs/vue3";
 const role = ref();
 const form = useForm({

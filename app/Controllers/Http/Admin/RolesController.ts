@@ -1,4 +1,3 @@
-import Redis from "@ioc:Adonis/Addons/Redis";
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Permission from "App/Model/Permission";
 
@@ -8,18 +7,7 @@ export default class RolesController {
   }
 
   public async create({ inertia }: HttpContextContract) {
-    let permissions;
-    const permissionsExist = await Redis.exists("permissions");
-
-    if (!permissionsExist) {
-      permissions = await Permission.findMany();
-      if (permissions?.length) {
-        await Redis.set("permissions", JSON.stringify(permissions));
-      }
-    } else {
-      const cachedPermissions = await Redis.get("permissions");
-      permissions = cachedPermissions ? JSON.parse(cachedPermissions) : [];
-    }
+    let permissions = await Permission.findMany();
 
     return inertia.render("Admin/Roles/Create", {
       permissions,

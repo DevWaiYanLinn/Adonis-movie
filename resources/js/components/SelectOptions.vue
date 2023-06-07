@@ -8,7 +8,7 @@
     </label>
     <select
       @change="$emit('update:modelValue', $event.target.value)"
-      class="block focus:outline-none focus:border-purple-400 appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+      class="block focus:outline-none focus:border-purple-400 appearance-none w-full bg-grey-lighter border-2 border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
       id="grid-state"
     >
       <slot />

@@ -24,7 +24,7 @@
           </div>
           <span class="font-md ml-2 font-bold">Today's Gross Sale</span>
         </div>
-        <p class="text-xl font-bold mt-3">20000 MMK</p>
+        <p class="text-xl font-semibold mt-3">{{ (2000).toLocaleString() }} MMK</p>
       </div>
     </a>
     <a
@@ -51,7 +51,7 @@
           </div>
           <span class="font-md ml-2 font-bold">Total Ticket Sold</span>
         </div>
-        <p class="text-xl font-bold mt-3">200 Tickets</p>
+        <p class="text-xl font-semibold mt-3">{{ (200).toLocaleString() }} Tickets</p>
       </div>
     </a>
   </div>

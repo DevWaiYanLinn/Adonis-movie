@@ -54,12 +54,17 @@
         </svg>
       </page-tab>
     </div>
-    <form @submit.prevent="createUser"
+    <form
+      @submit.prevent="createUser"
       class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2"
     >
       <div class="md:flex -mx-3 mb-5">
         <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
-          <TextField label="First Name" placeholder="Jane" v-model="form.first_name" />
+          <TextField
+            label="First Name"
+            placeholder="Jane"
+            v-model="form.first_name"
+          />
         </div>
         <div class="md:w-1/2 mx-3">
           <TextField label="Last Name" placeholder="Wick" />
@@ -67,7 +72,12 @@
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-1/2 mx-3">
-          <TextField label="email" type="email" placeholder="user@email.com" v-model="form.last_nam"/>
+          <TextField
+            label="email"
+            type="email"
+            placeholder="user@email.com"
+            v-model="form.last_nam"
+          />
         </div>
         <div class="md:w-1/2 mx-3">
           <TextField
@@ -76,6 +86,19 @@
             type="password"
             placeholder="**********"
           />
+        </div>
+      </div>
+      <div class="-mx-3 md:flex mb-5">
+        <div class="md:w-1/2 mx-3">
+          <DatePicker />
+        </div>
+        <div class="md:w-1/2 mx-3">
+          <!-- <TextField
+            v-model="form.password"
+            label="password"
+            type="password"
+            placeholder="**********"
+          /> -->
         </div>
       </div>
       <div class="-mx-3 mb-5">
@@ -90,11 +113,17 @@
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-full mx-3 mb-6 md:mb-0">
-          <TextArea v-model="form.address" label="Address" placeholder="Yangon,...." />
+          <TextArea
+            v-model="form.address"
+            label="Address"
+            placeholder="Yangon,...."
+          />
         </div>
       </div>
       <div class="flex justify-end items-center">
-        <button class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400">
+        <button
+          class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400"
+        >
           Create
         </button>
       </div>
@@ -109,6 +138,7 @@ import TextField from "@/components/TextField.vue";
 import TextArea from "@/components/TextArea.vue";
 import PageTab from "@/components/PageTab.vue";
 import SelectOptions from "@/components/SelectOptions.vue";
+import DatePicker from "@/components/DatePicker.vue";
 export default {
   layout: AdminLayout,
 };
@@ -116,18 +146,18 @@ export default {
 <script setup>
 import { ref } from "vue";
 const { roles } = defineProps(["roles"]);
-import { useForm } from '@inertiajs/vue3'
+import { useForm } from "@inertiajs/vue3";
 const role = ref();
 const form = useForm({
-  first_name:'',
-  last_name:'',
-  email:'',
-  password:'',
-  role:'',
-  address:''
-})
+  first_name: "",
+  last_name: "",
+  email: "",
+  password: "",
+  role: "",
+  address: "",
+});
 
-const createUser = () =>{
-  form.post('/users')
-}
+const createUser = () => {
+  form.post("/users");
+};
 </script>

@@ -10,9 +10,8 @@
     <input
       autocomplete="off"
       v-bind="propsRef"
-      v-model="inputRef"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="focus:outline-none focus:border-purple-400 appearance-none block w-full bg-grey-lighter text-grey-darker border rounded py-3 px-4 mb-3"
+      class="focus:outline-none focus:border-purple-400 appearance-none block w-full border rounded py-3 px-4 mb-3"
       :class="{'border-red-500 focus:outline-transparent': error}"
     />
     <p class="text-red-500 text-xs italic">{{ error }}</p>
@@ -38,6 +37,5 @@ const { error, ...props } = defineProps({
     type: String,
   },
 });
-const inputRef = ref("");
 const propsRef = toRef(props);
 </script>

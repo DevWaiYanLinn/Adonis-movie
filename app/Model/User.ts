@@ -13,6 +13,7 @@ export default class User {
         createdAt: true,
         roles: true,
       },
+      where:{},
       ...query,
     });
   }

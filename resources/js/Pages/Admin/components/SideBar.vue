@@ -1,7 +1,7 @@
 <template>
   <div class="col-span-2 bg-white shadow-lg">
     <h1 class="text-center py-3 text-2xl text-gray-200 font-bold">
-      <span class="text-purple-400 font-bold font-mono">Adonis Cineplex</span>
+      <span class="text-[#9966CC] font-bold font-mono">Adonis Cineplex</span>
     </h1>
     <ul class="p-3 flex flex-col gap-1">
       <li>

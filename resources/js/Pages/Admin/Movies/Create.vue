@@ -127,7 +127,7 @@
   import TextField from '@/components/TextField.vue'
   import TextArea from '@/components/TextArea.vue'
   import PageTab from "@/components/PageTab.vue";
-  import SelectOptions from '@/components/Select.vue'
+  import SelectOptions from '@/components/SelectOptions.vue'
   export default {
     layout: AdminLayout,
   };

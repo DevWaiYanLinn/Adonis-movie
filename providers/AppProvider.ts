@@ -1,5 +1,4 @@
 import type { ApplicationContract } from "@ioc:Adonis/Core/Application";
-import Env from '@ioc:Adonis/Core/Env'
 import prisma from "../start/prisma";
 
 export default class AppProvider {

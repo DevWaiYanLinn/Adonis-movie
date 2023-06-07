@@ -11,23 +11,27 @@ const userSeeder = async (PrismaClient: PrismaClient) => {
   await PrismaClient.user.createMany({
     data: [
       {
-        name: "Super Admin",
-        email: "supderAdmin@adoins.com",
+        first_name: "Ethan",
+        last_name:"Smith",
+        email: "Ethan@adoins.com",
         password,
       },
       {
-        name: "Admin",
+        first_name: "Olivia",
+        last_name:"Johnson",
         email: "admin@adoins.com",
         password,
       },
       {
-        name: "General Admin",
-        email: "generalAdmin@adoins.com",
+        first_name: "Liam",
+        last_name:"Thompson",
+        email: "Liam@adoins.com",
         password,
       },
       {
-        name: "Staff",
-        email: "Staff@gmail.com",
+        first_name: "Sophia",
+        last_name:"Anderson",
+        email: "Sophia@gmail.com",
         password,
       },
     ],

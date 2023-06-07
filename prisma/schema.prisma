@@ -30,11 +30,21 @@ model Permission {
   updatedAt DateTime @updatedAt @db.Timestamp
 }
 
+enum Gender {
+  Male
+  Female
+  Other
+}
+
 model User {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   email           String   @unique
-  name            String?
+  first_name      String
+  last_name       String
+  gender          Gender   @default(Other)
+  date_of_birth   DateTime? 
   password        String
+  address         String?
   rememberMeToken String?
   roleIDs         String[] @db.ObjectId
   roles           Role[]   @relation(fields: [roleIDs], references: [id])

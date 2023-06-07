@@ -1,10 +1,7 @@
 <template>
   <div class="text-gray-500">
     <div class="flex flex-wrap justify-center gap-2 my-4">
-      <page-tab
-        label="Create"
-        url="/admin/users/create"
-      >
+      <page-tab label="Create" url="/admin/users/create">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -20,10 +17,7 @@
           ></path>
         </svg>
       </page-tab>
-      <page-tab
-        label="Lists"
-        url="/admin/users"
-      >
+      <page-tab label="Lists" url="/admin/users">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -60,31 +54,24 @@
         </svg>
       </page-tab>
     </div>
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+    <form @submit.prevent="createUser"
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2"
+    >
       <div class="md:flex -mx-3 mb-5">
         <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
-          <text-field
-            label="First Name"
-            placeholder="Jane"
-          />
+          <TextField label="First Name" placeholder="Jane" v-model="form.first_name" />
         </div>
         <div class="md:w-1/2 mx-3">
-          <text-field
-            label="Last Name"
-            placeholder="Wick"
-          />
+          <TextField label="Last Name" placeholder="Wick" />
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-1/2 mx-3">
-          <TextField
-            label="email"
-            type="email"
-            placeholder="user@email.com"
-          />
+          <TextField label="email" type="email" placeholder="user@email.com" v-model="form.last_nam"/>
         </div>
         <div class="md:w-1/2 mx-3">
           <TextField
+            v-model="form.password"
             label="password"
             type="password"
             placeholder="**********"
@@ -93,40 +80,54 @@
       </div>
       <div class="-mx-3 mb-5">
         <div class="mx-3">
-          <select-options label="Role" />
+          <SelectOptions label="Role" v-model="form.role">
+            <option value="">Select Role</option>
+            <option v-for="role in roles" :key="role.id" :value="role.id">
+              {{ role.name }}
+            </option>
+          </SelectOptions>
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-full mx-3 mb-6 md:mb-0">
-          <TextArea
-            label="Address"
-            placeholder="Yangon,...."
-          />
+          <TextArea v-model="form.address" label="Address" placeholder="Yangon,...." />
         </div>
       </div>
       <div class="flex justify-end items-center">
-        <button class="px-5 py-2 rounded-md text-white bg-green-600">
+        <button class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400">
           Create
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
 import { useToast } from "vue-toastification";
-import TextField from '@/components/TextField.vue'
-import TextArea from '@/components/TextArea.vue'
+import TextField from "@/components/TextField.vue";
+import TextArea from "@/components/TextArea.vue";
 import PageTab from "@/components/PageTab.vue";
-import SelectOptions from '@/components/Select.vue'
+import SelectOptions from "@/components/SelectOptions.vue";
 export default {
   layout: AdminLayout,
 };
 </script>
 <script setup>
-const toast = useToast();
-const createCinema = () => {
-  toast.success("Hello Toast", {});
-};
+import { ref } from "vue";
+const { roles } = defineProps(["roles"]);
+import { useForm } from '@inertiajs/vue3'
+const role = ref();
+const form = useForm({
+  first_name:'',
+  last_name:'',
+  email:'',
+  password:'',
+  role:'',
+  address:''
+})
+
+const createUser = () =>{
+  form.post('/users')
+}
 </script>

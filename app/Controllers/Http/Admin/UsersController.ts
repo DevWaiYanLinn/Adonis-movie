@@ -1,22 +1,18 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import Role from "App/Model/Role";
 import User from "App/Model/User";
 
 export default class UsersController {
-  public index({ inertia }: HttpContextContract) {
-    const users = User.findMany({
-      select: {
-        name: true,
-        email: true,
-        status: true,
-        password: false,
-        createdAt: true,
-      },
-    });
+  public async index({ inertia }: HttpContextContract) {
+    const users = await User.findMany();
     return inertia.render("Admin/Users/Index", {
       users,
     });
   }
-  public create({ inertia }: HttpContextContract) {
-    return inertia.render("Admin/Users/Create");
+  public async create({ inertia }: HttpContextContract) {
+    const roles = await Role.findMany();
+    return inertia.render("Admin/Users/Create", {
+      roles,
+    });
   }
 }

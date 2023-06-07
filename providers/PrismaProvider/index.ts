@@ -98,7 +98,7 @@ export class PrismaAuthProvider<User extends PrismaAuthBase>
     });
     return this.getUserFor(user);
   }
-
+  
   public async findByUid(uidValue: string) {
     const orStatements = this.config.uids.map((field) => ({
       [field]: uidValue,

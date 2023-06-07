@@ -4,7 +4,7 @@
     type="button"
     class="text-gray-400 flex items-end rounded-lg bg-white hover:bg-indigo-50 focus:border-indigo-300 px-2 py-1 text-sm"
     :class="{
-      '!text-white !bg-purple-400': props.url.startsWith($page.url)
+      '!text-white !bg-purple-400': props.url === $page.url.split('?')[0]
     }"
   >
     <span class="mr-1">{{ props.label }}</span>

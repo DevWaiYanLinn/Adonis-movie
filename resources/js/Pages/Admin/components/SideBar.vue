@@ -1,7 +1,7 @@
 <template>
   <div class="col-span-2 bg-white shadow-lg">
     <h1 class="text-center py-3 text-2xl text-gray-200 font-bold">
-      <span class="text-[#9966CC] font-bold font-mono">Adonis Cineplex</span>
+      <span class="text-purple-800 font-bold">ADONIS Cineplex</span>
     </h1>
     <ul class="p-3 flex flex-col gap-1">
       <li>
@@ -16,7 +16,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-purple-400"
+              class="w-5 h-5 text-purple-600"
             >
               <path
                 stroke-linecap="round"
@@ -26,8 +26,8 @@
             </svg>
           </div>
           <span
-            class="ml-2 font-bold text-md text-gray-400"
-            :class="{ 'text-purple-400': /^\/admin$/.test($page.url) }"
+            class="ml-2 font-bold text-md text-gray-700"
+            :class="{ 'text-purple-600': /^\/admin$/.test($page.url) }"
             >Dashboard</span
           >
         </inertia-link>
@@ -44,7 +44,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-red-400"
+              class="w-5 h-5 text-red-600"
             >
               <path
                 stroke-linecap="round"
@@ -54,8 +54,8 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-gray-400 text-md font-bold"
-            :class="{ 'text-purple-400': /\/admin\/cinemas.*/.test($page.url) }"
+            class="ml-2 text-gray-600 text-md font-bold"
+            :class="{ 'text-purple-600': /\/admin\/cinemas.*/.test($page.url) }"
             >Cinemas Mangement</span
           >
         </inertia-link>
@@ -72,7 +72,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-pink-400"
+              class="w-5 h-5 text-pink-600"
             >
               <path
                 stroke-linecap="round"
@@ -81,8 +81,8 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-gray-400 text-md font-bold"
-            :class="{ 'text-purple-400': $page.url.startsWith('/admin/movies') }"
+            class="ml-2 text-gray-600 text-md font-bold"
+            :class="{ 'text-purple-600': $page.url.startsWith('/admin/movies') }"
             >Movie Mangement</span
           >
         </inertia-link>
@@ -99,7 +99,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-green-400"
+              class="w-5 h-5 text-green-600"
             >
               <path
                 stroke-linecap="round"
@@ -109,8 +109,8 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-gray-400 text-md font-bold"
-            :class="{ 'text-purple-400': /\/admin\/users.*/.test($page.url) }"
+            class="ml-2 text-gray-600 text-md font-bold"
+            :class="{ 'text-purple-600': /\/admin\/users.*/.test($page.url) }"
             >Users Mangement</span
           >
         </inertia-link>
@@ -127,7 +127,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-blue-500"
+              class="w-5 h-5 text-blue-600"
             >
               <path
                 stroke-linecap="round"
@@ -137,9 +137,9 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-gray-400 font-bold"
+            class="ml-2 text-gray-600 font-bold"
             title="Permission Management"
-            :class="{ 'text-purple-400': /\/admin\/roles.*/.test($page.url) }"
+            :class="{ 'text-purple-600': /\/admin\/roles.*/.test($page.url) }"
             >Role Mangement</span
           >
         </inertia-link>
@@ -156,7 +156,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-cyan-400"
+              class="w-5 h-5 text-cyan-600"
             >
               <path
                 stroke-linecap="round"
@@ -166,7 +166,7 @@
             </svg>
           </div>
           <span
-            class="ml-2 text-md text-gray-400 font-bold"
+            class="ml-2 text-md text-gray-600 font-bold"
             title="Permission Management"
             >Permissions Mange....</span
           >

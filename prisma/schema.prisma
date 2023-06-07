@@ -36,27 +36,6 @@ enum Gender {
   Other
 }
 
-model User {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  email           String    @unique
-  first_name      String
-  last_name       String
-  gender          Gender    @default(Other)
-  phone_number    String?
-  date_of_birth   DateTime?
-  password        String
-  address         String?
-  rememberMeToken String?
-  cinemaID        String?   @db.ObjectId
-  cinema          Cinema?   @relation(fields: [cinemaID], references: [id])
-  roleIDs         String[]  @db.ObjectId
-  roles           Role[]    @relation(fields: [roleIDs], references: [id])
-  status          Boolean   @default(true)
-  createdAt       DateTime  @default(now()) @db.Timestamp
-  updatedAt       DateTime  @updatedAt @db.Timestamp
-  cinemaId        String    @db.ObjectId
-}
-
 model Cinema {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
   name        String     @unique
@@ -68,6 +47,27 @@ model Cinema {
   phoneNumber String
   createdAt   DateTime   @default(now()) @db.Timestamp
   updatedAt   DateTime   @updatedAt @db.Timestamp
+}
+
+model User {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  email           String    @unique
+  first_name      String
+  last_name       String
+  gender          Gender    @default(Other)
+  phone_number    String?
+  date_of_birth   DateTime?
+  password        String
+  address         String?
+  rememberMeToken String?
+  roleIDs         String[]  @db.ObjectId
+  roles           Role[]    @relation(fields: [roleIDs], references: [id])
+  cinema          Cinema?   @relation(fields: [cinemaID], references: [id])
+  cinemaID        String?   @db.ObjectId
+  status          Boolean   @default(true)
+  owner_access    Boolean   @default(false)
+  createdAt       DateTime  @default(now()) @db.Timestamp
+  updatedAt       DateTime  @updatedAt @db.Timestamp
 }
 
 model Row {

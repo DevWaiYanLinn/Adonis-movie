@@ -65,10 +65,11 @@
             placeholder="Jane"
             id="first-name"
             v-model="form.firstName"
+            :error="form.errors.firstName"
           />
         </div>
         <div class="md:w-1/2 mx-3">
-          <TextField label="Last Name" placeholder="Wick" id="last-name" />
+          <TextField label="Last Name" placeholder="Wick" id="last-name" :error="form.errors.email" />
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
@@ -79,6 +80,7 @@
             id="email"
             placeholder="user@email.com"
             v-model="form.lastName"
+            :error="form.errors.lastName"
           />
         </div>
         <div class="md:w-1/2 mx-3">
@@ -88,12 +90,17 @@
             type="password"
             id="password"
             placeholder="**********"
+            :error="form.errors.password"
           />
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-1/2 mx-3">
-          <DatePicker label="Date Of Birth" id="date-of-birth" />
+          <DatePicker
+            label="Date Of Birth"
+            id="date-of-birth"
+            v-model="form.dateOfBirth"
+          />
         </div>
         <div class="md:w-1/2 mx-3">
           <SelectOptions label="Gender" id="gender" v-model="form.gender">
@@ -138,6 +145,7 @@
       </div>
       <div class="flex justify-end items-center">
         <button
+          type="submit"
           class="px-5 py-2 rounded-md text-white bg-purple-500 focus:bg-purple-400"
         >
           REGISTER
@@ -149,38 +157,45 @@
 
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
+export default {
+  layout: AdminLayout,
+};
+</script>
+<script setup>
 import { useToast } from "vue-toastification";
 import TextField from "@/components/TextField.vue";
 import TextArea from "@/components/TextArea.vue";
 import PageTab from "@/components/PageTab.vue";
 import SelectOptions from "@/components/SelectOptions.vue";
 import DatePicker from "@/components/DatePicker.vue";
-export default {
-  layout: AdminLayout,
-};
-</script>
-<script setup>
 import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
+
+const toast = useToast();
 const { roles, gendersm, cinemas } = defineProps([
   "roles",
   "genders",
   "cinemas",
 ]);
-import { useForm } from "@inertiajs/vue3";
 const role = ref();
 const form = useForm({
   firstName: "",
   lastName: "",
   email: "",
+  dateOfBirth: "",
   password: "",
-  role: "",
-  address: "",
-  cinemaID: "",
   roleID: "",
+  cinemaID: "",
   address: "",
+  gender: "",
 });
-
 const createUser = () => {
-  form.post("/users");
+  form.post("/admin/users", {
+    onSuccess: (page) => {
+      alert("ssss");
+    },
+    onError: (errors) => {
+    },
+  });
 };
 </script>

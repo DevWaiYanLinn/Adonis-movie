@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-full">
     <label
-      class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+      class="block uppercase tracking-wide text-grey-darker text-xs font-medium mb-2"
       :for="id"
     >
       {{ label }}
@@ -13,7 +13,7 @@
     >
       <slot />
     </select>
-    <p class="text-red text-xs italic">{{ error }}</p>
+    <p v-if="error.length" class="mt-1 text-red-500 text-xs italic">{{ error }}</p>
   </div>
 </template>
 
@@ -27,7 +27,8 @@ const { label, error, id, ...props } = defineProps({
     type: String,
   },
   error: {
-    type: String,
+    type: Array,
+    default:[]
   },
   id: {
     type: String,

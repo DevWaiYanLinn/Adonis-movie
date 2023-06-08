@@ -151,12 +151,11 @@
           </div>
         </div>
       </nav>
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>
 <script setup>
-
 import SideBar from '@/Pages/Admin/components/SideBar.vue'
 
 </script>

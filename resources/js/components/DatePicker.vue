@@ -3,12 +3,13 @@
     <label
       v-if="label"
       :for="id"
-      class="block text-gray-500 uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+      class="block text-gray-500 uppercase tracking-wide text-grey-darker text-xs font-medium mb-2"
     >
       {{ label }}
     </label>
     <VueDatePicker
       v-model="date"
+      @update:model-value="handleDate"
       :id="id"
       type="date"
       format="yyyy-MM-dd"
@@ -20,7 +21,9 @@
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { ref, toRef, watch } from "vue";
-const date = ref();
+const date = ref(new Date());
+const emit = defineEmits(["update:modelValue"]);
+
 const { label, id } = defineProps({
   label: {
     type: String,
@@ -29,10 +32,10 @@ const { label, id } = defineProps({
     type: String,
   },
 });
-// watch(date, (y) => {
-//   console.log(y)
-//   $emit("update:modelValue", y);
-// });
+
+const handleDate = (date) => {
+  emit("update:modelValue", date);
+};
 </script>
 <style>
 .date-picker .dp__input_readonly {

@@ -21,7 +21,7 @@
 import Route from "@ioc:Adonis/Core/Route";
 
 Route.get("/", async ({ response }) => {
-  return response.redirect('/admin/auth/login')
+  return response.redirect("/admin/auth/login");
 });
 
 Route.group(() => {
@@ -30,24 +30,22 @@ Route.group(() => {
   Route.get("/halls", "HallsController.index");
   Route.get("/halls/:id", "HallsController.show");
 
+  Route.get("/users", "UsersController.index");
+  Route.get("/users/create", "UsersController.create");
+  Route.post("/users", "UsersController.store");
 
-  Route.get('/users', 'UsersController.index');
-  Route.get('/users/create', 'UsersController.create')
+  Route.get("/roles/create", "RolesController.create");
+  Route.get("/roles", "RolesController.index");
 
-  Route.get('/roles/create', "RolesController.create")
-  Route.get('/roles', 'RolesController.index');
+  Route.get("/movies/create", "MoviesController.create");
 
-  Route.get('/cinemas/:cinema_id/halls/:hall_id/seats', 'SeatsController.index')
-
-  Route.get('/movies/create', 'MoviesController.create')
-
-  Route.get('/threaters', 'ThreatersController.index')
+  Route.get("/threaters", "ThreatersController.index");
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");
 
-
-Route.group(() =>{
-  Route.get('/login', 'AuthController.login')
-}).prefix("/admin/auth")
-.namespace("App/Controllers/Http/Admin/Auth");
+Route.group(() => {
+  Route.get("/login", "AuthController.login");
+})
+  .prefix("/admin/auth")
+  .namespace("App/Controllers/Http/Admin/Auth");

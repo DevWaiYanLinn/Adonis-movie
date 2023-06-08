@@ -1,15 +1,15 @@
 <template>
   <div class="date-picker">
     <label
-      v-if="propsRef.label"
-      :for="propsRef.id"
+      v-if="label"
+      :for="id"
       class="block text-gray-500 uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
     >
-      {{ propsRef.label }}
+      {{ label }}
     </label>
     <VueDatePicker
       v-model="date"
-      :id="propsRef.id"
+      :id="id"
       type="date"
       format="yyyy-MM-dd"
     ></VueDatePicker>
@@ -19,19 +19,20 @@
 <script setup>
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import { ref, toRef } from "vue";
-const date = ref(new Date());
-const props = defineProps({
+import { ref, toRef, watch } from "vue";
+const date = ref();
+const { label, id } = defineProps({
   label: {
     type: String,
-    default: "",
   },
   id: {
     type: String,
-    default: "",
   },
 });
-const propsRef = toRef(props);
+// watch(date, (y) => {
+//   console.log(y)
+//   $emit("update:modelValue", y);
+// });
 </script>
 <style>
 .date-picker .dp__input_readonly {

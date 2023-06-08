@@ -1,20 +1,52 @@
 import prisma from "../../start/prisma";
+import type { User as PrismaUser } from "@prisma/client";
+
+enum Gender {
+  Male = "Male",
+  Female = "Female",
+  Other = "Other",
+}
+
+type TypeUser = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  gender?: Gender;
+  phoneNumber: string;
+  address: string;
+  dateOfBirth: Date;
+  cinema: {
+    connect: { id: string };
+  };
+  roles: {
+    connect: Array<{ id: string }>;
+  };
+};
 
 export default class User {
-  constructor() {}
+  private data: TypeUser;
+
+  constructor(data) {
+    this.data = data;
+  }
   static findMany(query = {}) {
     return prisma.user.findMany({
       select: {
-        first_name: true,
-        last_name:true,
+        firstName: true,
+        lastName: true,
         email: true,
         status: true,
-        password: false,
         createdAt: true,
-        roles: true,
+        password: false,
       },
-      where:{},
-      ...query,
+      ...query
+    });
+  }
+
+  public async save(): Promise<PrismaUser> {
+    return prisma.user.create({
+      data: this.data,
     });
   }
 }

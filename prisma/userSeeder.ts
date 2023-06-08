@@ -12,30 +12,30 @@ const userSeeder = async (prisma: PrismaClient) => {
   await prisma.user.createMany({
     data: [
       {
-        first_name: "Ethan",
-        last_name:"Smith",
+        firstName: "Ethan",
+        lastName: "Smith",
         email: "Ethan@adoins.com",
         password,
         cinemaID: cinema.id,
-        owner_access: true,
+        ownerAccess: true,
       },
       {
-        first_name: "Olivia",
-        last_name:"Johnson",
+        firstName: "Olivia",
+        lastName: "Johnson",
         email: "admin@adoins.com",
         password,
         cinemaID: cinema.id,
       },
       {
-        first_name: "Liam",
-        last_name:"Thompson",
+        firstName: "Liam",
+        lastName: "Thompson",
         email: "Liam@adoins.com",
         password,
         cinemaID: cinema.id,
       },
       {
-        first_name: "Sophia",
-        last_name:"Anderson",
+        firstName: "Sophia",
+        lastName: "Anderson",
         email: "Sophia@gmail.com",
         password,
         cinemaID: cinema.id,
@@ -44,4 +44,4 @@ const userSeeder = async (prisma: PrismaClient) => {
   });
 };
 
-export default userSeeder
+export default userSeeder;

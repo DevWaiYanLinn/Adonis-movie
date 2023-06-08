@@ -1,4 +1,4 @@
-import Redis from "@ioc:Adonis/Addons/Redis";
+
 import prisma from "../../start/prisma";
 
 export default class Role {

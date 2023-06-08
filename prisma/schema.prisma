@@ -45,6 +45,9 @@ model Cinema {
   city        String
   users       User[]
   phoneNumber String
+  status      Boolean    @default(true)
+  openingHour String?
+  closingHour String?
   createdAt   DateTime   @default(now()) @db.Timestamp
   updatedAt   DateTime   @updatedAt @db.Timestamp
 }
@@ -52,11 +55,11 @@ model Cinema {
 model User {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   email           String    @unique
-  first_name      String
-  last_name       String
+  firstName       String
+  lastName        String
   gender          Gender    @default(Other)
-  phone_number    String?
-  date_of_birth   DateTime?
+  phoneNumber     String?
+  dateOfBirth     DateTime?
   password        String
   address         String?
   rememberMeToken String?
@@ -65,7 +68,7 @@ model User {
   cinema          Cinema?   @relation(fields: [cinemaID], references: [id])
   cinemaID        String?   @db.ObjectId
   status          Boolean   @default(true)
-  owner_access    Boolean   @default(false)
+  ownerAccess     Boolean   @default(false)
   createdAt       DateTime  @default(now()) @db.Timestamp
   updatedAt       DateTime  @updatedAt @db.Timestamp
 }

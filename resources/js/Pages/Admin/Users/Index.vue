@@ -165,7 +165,7 @@
                     </div>
                     <div class="ml-3">
                       <p class="text-gray-900 whitespace-no-wrap">
-                        {{ user.first_name + " " + user.last_name }}
+                        {{ user.firstName + " " + user.lastName }}
                       </p>
                     </div>
                   </div>

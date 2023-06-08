@@ -5,15 +5,25 @@
     class="h-screen w-screen flex justify-center items-center fixed top-0 left-0 bg-gray-200 bg-opacity-50 z-20"
   >
     <div
-      class="min-w-[500px] grid grid-cols-5 rounded-lg border shadow-md relative overflow-hidden employee-card before:bg-purple-400"
+      class="min-w-[450px] grid grid-cols-5 rounded-lg border shadow-md relative overflow-hidden employee-card before:bg-purple-500"
     >
       <div
-        class="relative col-span-2 h-full bg-purple-400 flex flex-col justify-center items-center employee-profile"
-      >
-        <img
+        class="relative col-span-2 h-full bg-white flex  justify-start items-center employee-profile"
+      > 
+        <div class="p-2 text-white h-full flex flex-col justify-center font-medium font-mono bg-purple-500">
+          A<br>
+          D<br>
+          O<br>
+          N<br>
+          I<br>
+          S<br>
+        </div>
+        <div class="w-full">
+          <img
           :src="require('../../assets/image/businessman.png')"
-          class="w-[100px] rounded-full border-white z-10"
+          class="w-[100px] ml-8 rounded-full border-white z-10"
         />
+        </div>
       </div>
       <div class="col-span-3 bg-white px-5 py-10">
         <ul class="flex -mb-3 flex-col">

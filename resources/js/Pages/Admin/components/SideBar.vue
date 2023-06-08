@@ -34,7 +34,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/cinemas/create"
+          href="/admin/cinemas"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
@@ -62,7 +62,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/movies/create"
+          href="/admin/movies"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
@@ -89,7 +89,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/users/create"
+          href="/admin/users"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
@@ -117,7 +117,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/roles/create"
+          href="/admin/roles"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">
@@ -145,7 +145,7 @@
       </li>
       <li>
         <inertia-link
-          href="/admin/roles/create"
+          href="/admin/roles"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
         >
           <div class="p-2 shadow-lg rounded-lg bg-white">

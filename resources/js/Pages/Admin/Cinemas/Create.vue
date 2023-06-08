@@ -62,23 +62,39 @@
     </div>
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
       <div class="-mx-3 md:flex mb-5">
-        <div class="md:w-full px-3 md:mb-0">
+        <div class="md:w-1/2 px-3 md:mb-0">
           <TextField label="name" placeholder="Enter Cinema Name"/>
         </div>
-      </div>
-      <div class="-mx-3 md:flex mb-6">
-        <div class="md:w-full px-3">
+        <div class="md:w-1/2 px-3">
           <TextField label="Phone Number" placeholder="09979*********"/>
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
-        <div class="md:w-full px-3">
+        <div class="md:w-1/2 px-3">
           <TextField label="city" placeholder="Enter City Name"/>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <SelectOptions label="Status">
+              <option value="">Select Status</option>
+              <option value="0">Close</option>
+              <option value="0">Open</option>
+          </SelectOptions>
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
-        <div class="md:w-full px-3 md:mb-0">
+        <div class="md:w-1/2 px-3">
+          <TextField label="Opening Hours" type="time" value="09:00" id="opening-hours"/>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <TextField label="Closing Hours" type="time" value="20:00" id="closing-hours"/>
+        </div>
+      </div>
+      <div class="-mx-3 md:flex mb-5">
+        <div class="md:w-1/2 px-3 md:mb-0">
           <TextArea label="address" placeholder="Yangon,....."/>
+        </div>
+        <div class="md:w-1/2 px-3 md:mb-0">
+          <TextArea label="description" placeholder="About...."/>
         </div>
       </div>
       <div class="flex justify-end items-center">
@@ -93,8 +109,10 @@
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
 import TextField from '@/components/TextField.vue'
+import SelectOptions from '@/components/SelectOptions.vue'
 import TextArea from '@/components/TextArea.vue'
 import PageTab from "@/components/PageTab.vue";
+import DatePicker from "@/components/DatePicker.vue";
 import { useToast } from "vue-toastification";
 export default {
   layout: AdminLayout,

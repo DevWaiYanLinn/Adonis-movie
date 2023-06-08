@@ -63,11 +63,12 @@
           <TextField
             label="First Name"
             placeholder="Jane"
-            v-model="form.first_name"
+            id="first-name"
+            v-model="form.firstName"
           />
         </div>
         <div class="md:w-1/2 mx-3">
-          <TextField label="Last Name" placeholder="Wick" />
+          <TextField label="Last Name" placeholder="Wick" id="last-name" />
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
@@ -75,8 +76,9 @@
           <TextField
             label="email"
             type="email"
+            id="email"
             placeholder="user@email.com"
-            v-model="form.last_nam"
+            v-model="form.lastName"
           />
         </div>
         <div class="md:w-1/2 mx-3">
@@ -84,6 +86,7 @@
             v-model="form.password"
             label="password"
             type="password"
+            id="password"
             placeholder="**********"
           />
         </div>
@@ -93,7 +96,7 @@
           <DatePicker label="Date Of Birth" id="date-of-birth" />
         </div>
         <div class="md:w-1/2 mx-3">
-          <SelectOptions label="Gender" v-model="form.role">
+          <SelectOptions label="Gender" id="gender" v-model="form.gender">
             <option value="">Select Gender</option>
             <option v-for="gender in genders" :key="gender" :value="gender">
               {{ gender }}
@@ -103,7 +106,7 @@
       </div>
       <div class="-mx-3 mb-5 md:flex">
         <div class="mx-3 md:w-1/2">
-          <SelectOptions label="Role" v-model="form.role">
+          <SelectOptions label="Role" v-model="form.roleID" id="role">
             <option value="">Select Role</option>
             <option v-for="role in roles" :key="role.id" :value="role.id">
               {{ role.name }}
@@ -111,9 +114,13 @@
           </SelectOptions>
         </div>
         <div class="mx-3 md:w-1/2">
-          <SelectOptions label="Ciemas" >
+          <SelectOptions label="Ciemas" id="cinema" v-model="form.cinemaID">
             <option value="">Select Cinema</option>
-            <option v-for="cinema in cinemas" :key="cinema.id" :value="cinema.id">
+            <option
+              v-for="cinema in cinemas"
+              :key="cinema.id"
+              :value="cinema.id"
+            >
               {{ cinema.name }}
             </option>
           </SelectOptions>
@@ -122,6 +129,7 @@
       <div class="-mx-3 md:flex mb-5">
         <div class="md:w-full mx-3 mb-6 md:mb-0">
           <TextArea
+            id="address"
             v-model="form.address"
             label="Address"
             placeholder="Yangon,...."
@@ -153,15 +161,22 @@ export default {
 </script>
 <script setup>
 import { ref } from "vue";
-const { roles, gendersm, cinemas } = defineProps(["roles", "genders", 'cinemas']);
+const { roles, gendersm, cinemas } = defineProps([
+  "roles",
+  "genders",
+  "cinemas",
+]);
 import { useForm } from "@inertiajs/vue3";
 const role = ref();
 const form = useForm({
-  first_name: "",
-  last_name: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
   role: "",
+  address: "",
+  cinemaID: "",
+  roleID: "",
   address: "",
 });
 

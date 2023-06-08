@@ -28,11 +28,12 @@ export default class CreateUserValidator {
     lastName: schema.string([rules.required()]),
     email: schema.string([rules.required(), rules.email()]),
     password: schema.string([rules.required(), rules.minLength(8)]),
-    dateOfBirth: schema.date({
-      format: "yyyy-MM-dd HH:mm:ss",
-    }),
-    roleID: schema.string([rules.regex(/^[0-9a-fA-F]{24}$/)]),
-    cinemaID: schema.string([rules.regex(/^[0-9a-fA-F]{24}$/)]),
+    dateOfBirth: schema.date(),
+    roleID: schema.string([rules.required(), rules.regex(/^[0-9a-fA-F]{24}$/)]),
+    cinemaID: schema.string([
+      rules.required(),
+      rules.regex(/^[0-9a-fA-F]{24}$/),
+    ]),
     address: schema.string([rules.required()]),
     gender: schema.enum(["Male", "Female", "Other"] as const),
   });

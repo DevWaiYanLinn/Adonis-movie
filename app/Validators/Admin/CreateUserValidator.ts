@@ -24,17 +24,20 @@ export default class CreateUserValidator {
    *    ```
    */
   public schema = schema.create({
-    firstName: schema.string([rules.required()]),
-    lastName: schema.string([rules.required()]),
-    email: schema.string([rules.required(), rules.email()]),
-    password: schema.string([rules.required(), rules.minLength(8)]),
-    dateOfBirth: schema.date(),
-    roleID: schema.string([rules.required(), rules.regex(/^[0-9a-fA-F]{24}$/)]),
-    cinemaID: schema.string([
-      rules.required(),
-      rules.regex(/^[0-9a-fA-F]{24}$/),
+    firstName: schema.string(),
+    lastName: schema.string(),
+    email: schema.string([
+      rules.email({
+        // ignoreMaxLength: true,
+        // allowIpDomain: true,
+        // domainSpecificValidation: true,
+      }),
     ]),
-    address: schema.string([rules.required()]),
+    password: schema.string([rules.minLength(8)]),
+    dateOfBirth: schema.date(),
+    roleID: schema.string([rules.regex(/^[0-9a-fA-F]{24}$/)]),
+    cinemaID: schema.string([rules.regex(/^[0-9a-fA-F]{24}$/)]),
+    address: schema.string(),
     gender: schema.enum(["Male", "Female", "Other"] as const),
   });
 
@@ -49,5 +52,18 @@ export default class CreateUserValidator {
    * }
    *
    */
-  public messages: CustomMessages = {};
+  public messages: CustomMessages = {
+    "email.required": "Please enter a valid email address.",
+    "email.email":
+      "Please use a valid email format (e.g., example@example.com).",
+    "firstame.required": "Please enter the first name.",
+    "lastName.required": "Please enter the last name.",
+    "password.required": "Please enter a password.",
+    "password.minLength": "Password must be at least 8 characters long.",
+    "dateOfBirth.required": "Please enter your date of birth.",
+    "gender.required": "Please select the gender.",
+    "roleID.required": "Please select the role id.",
+    "cinemaID.required": "Please seleact the cinema id",
+    "address.required": "Please enter the address"
+  };
 }

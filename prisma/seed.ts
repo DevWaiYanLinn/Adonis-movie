@@ -2,11 +2,12 @@ import { PrismaClient } from "@prisma/client";
 import userSeeder from "./userSeeder";
 import cinemaSeeder from "./ciniemaSeeder";
 import hallSeeder from "./hallSeeder";
-import roleSeeder from './roleSeeder';
-import permissionSeeder from './permissionSeeder';
+import roleSeeder from "./roleSeeder";
+import permissionSeeder from "./permissionSeeder";
 import rowAndSeatSeeder from "./rowAndSeatSeeder";
 
 const prisma = new PrismaClient();
+
 async function main() {
   try {
     await cinemaSeeder(prisma);

@@ -69,7 +69,13 @@
           />
         </div>
         <div class="md:w-1/2 mx-3">
-          <TextField label="Last Name" placeholder="Wick" id="last-name" :error="form.errors.email" />
+          <TextField
+            label="Last Name"
+            v-model="form.lastName"
+            placeholder="Wick"
+            id="last-name"
+            :error="form.errors.lastName"
+          />
         </div>
       </div>
       <div class="-mx-3 md:flex mb-5">
@@ -79,8 +85,8 @@
             type="email"
             id="email"
             placeholder="user@email.com"
-            v-model="form.lastName"
-            :error="form.errors.lastName"
+            v-model="form.email"
+            :error="form.errors.email"
           />
         </div>
         <div class="md:w-1/2 mx-3">
@@ -100,10 +106,16 @@
             label="Date Of Birth"
             id="date-of-birth"
             v-model="form.dateOfBirth"
+            :error="form.errors.dateOfBirth"
           />
         </div>
         <div class="md:w-1/2 mx-3">
-          <SelectOptions label="Gender" id="gender" v-model="form.gender">
+          <SelectOptions
+            label="Gender"
+            id="gender"
+            v-model="form.gender"
+            :error="form.errors.gender"
+          >
             <option value="">Select Gender</option>
             <option v-for="gender in genders" :key="gender" :value="gender">
               {{ gender }}
@@ -113,7 +125,12 @@
       </div>
       <div class="-mx-3 mb-5 md:flex">
         <div class="mx-3 md:w-1/2">
-          <SelectOptions label="Role" v-model="form.roleID" id="role">
+          <SelectOptions
+            label="Role"
+            v-model="form.roleID"
+            id="role"
+            :error="form.errors.roleID"
+          >
             <option value="">Select Role</option>
             <option v-for="role in roles" :key="role.id" :value="role.id">
               {{ role.name }}
@@ -121,7 +138,12 @@
           </SelectOptions>
         </div>
         <div class="mx-3 md:w-1/2">
-          <SelectOptions label="Ciemas" id="cinema" v-model="form.cinemaID">
+          <SelectOptions
+            label="Ciemas"
+            id="cinema"
+            v-model="form.cinemaID"
+            :error="form.errors.cinemaID"
+          >
             <option value="">Select Cinema</option>
             <option
               v-for="cinema in cinemas"
@@ -140,6 +162,7 @@
             v-model="form.address"
             label="Address"
             placeholder="Yangon,...."
+            :error="form.errors.address"
           />
         </div>
       </div>
@@ -170,6 +193,7 @@ import SelectOptions from "@/components/SelectOptions.vue";
 import DatePicker from "@/components/DatePicker.vue";
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 
 const toast = useToast();
 const { roles, gendersm, cinemas } = defineProps([
@@ -192,9 +216,10 @@ const form = useForm({
 const createUser = () => {
   form.post("/admin/users", {
     onSuccess: (page) => {
-      alert("ssss");
+      router.get("/admin/users", {}, { only: ["users"] });
     },
     onError: (errors) => {
+      console.log(errors);
     },
   });
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-12 h-screen shadow">
-    <side-bar/>
-    <div class="col-span-10 p-5 h-screen overflow-y-scroll relative">
+    <side-bar />
+    <div class="col-span-10 p-5 h-screen overflow-y-scroll relative" scroll-region>
       <nav
         class="bg-white shadow-lg p-3 border rounded-lg grid grid-cols-2 items-center text-gray-500"
       >
@@ -151,11 +151,10 @@
           </div>
         </div>
       </nav>
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 <script setup>
-import SideBar from '@/Pages/Admin/components/SideBar.vue'
-
+import SideBar from "@/Pages/Admin/components/SideBar.vue";
 </script>

@@ -10,10 +10,11 @@
       @change="$emit('update:modelValue', $event.target.value)"
       class="block focus:outline-none focus:border-purple-400 appearance-none w-full bg-grey-lighter border-2 border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
       :id="id"
+      :class="{'border-red-500 !border' : error.length}"
     >
       <slot />
     </select>
-    <p v-if="error.length" class="mt-1 text-red-500 text-xs italic">{{ error }}</p>
+    <p v-if="error.length" class="mt-1 text-red-500 text-xs italic">{{ error[0] }}</p>
   </div>
 </template>
 

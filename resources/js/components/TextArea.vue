@@ -14,9 +14,11 @@
       :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
       class="resize-none focus:outline-none focus:border-purple-400 appearance-none block w-full bg-grey-lighter text-grey-darker border-2 rounded py-3 px-4 mb-3"
-      :class="{ 'border-red-500 focus:outline-transparent': error }"
+      :class="{ 'border-red-500 !border focus:outline-transparent': error.length }"
     ></textarea>
-    <p class="text-red-500 text-xs italic">{{ error }}</p>
+    <p v-if="error.length" class="text-red-500 text-xs italic">
+      {{ error[0] }}
+    </p>
   </div>
 </template>
 <script setup>
@@ -26,7 +28,8 @@ const { error, label, placeholder, rows, ...props } = defineProps({
     type: String,
   },
   error: {
-    type: String,
+    type: Array,
+    default: [],
   },
   placeholder: {
     type: String,

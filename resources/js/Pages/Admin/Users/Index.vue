@@ -1,6 +1,10 @@
 <template>
   <Teleport to="#modal">
-    <EmployeeCard :showModal="showModal" @close-modal="showModal = false"/>
+    <EmployeeCard
+      :showModal="showModal"
+      @close-modal="showModal = false"
+      :userInfo="userInfo"
+    />
   </Teleport>
   <div class="text-gray-500">
     <div class="flex flex-wrap justify-center gap-2 my-4">
@@ -85,7 +89,7 @@
           </div>
           <div class="relative">
             <select
-              class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+              class="h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
             >
               <option>All</option>
               <option>Active</option>
@@ -116,6 +120,8 @@
           </span>
           <input
             placeholder="Search"
+            :value="qs.search"
+            @input="searchUser({ search: $event.target.value })"
             class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
           />
         </div>
@@ -217,7 +223,7 @@
                         />
                       </svg>
                     </button>
-                    <button @click="showModal = true">
+                    <button @click="showUserInfo(user.id)">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -272,9 +278,28 @@ export default {
 <script setup>
 import PageTab from "@/components/PageTab.vue";
 import Badge from "@/components/Badge.vue";
-import {ref} from 'vue'
+import { router } from "@inertiajs/vue3";
+import { ref } from "vue";
 import * as moment from "moment";
 import EmployeeCard from "@/components/Modals/EmployeeCard.vue";
-const { users } = defineProps(["users"]);
+const { users, qs } = defineProps(["users", "qs"]);
 const showModal = ref(false);
+const userInfo = ref({});
+const searchTimeOut = ref();
+
+const searchUser = (data) => {
+  if (searchTimeOut.value) clearTimeout(searchTimeOut.value);
+  searchTimeOut.value = setTimeout(() => {
+    router.get("/admin/users", data, {
+      replace: true,
+      only: ["users", "qs"],
+      preserveState: true,
+    });
+  }, 500);
+};
+
+const showUserInfo = (id) => {
+  userInfo.value = users.find((user) => user.id === id) || {};
+  showModal.value = true;
+};
 </script>

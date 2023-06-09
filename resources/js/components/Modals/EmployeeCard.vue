@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="showModal"
+    v-if="show"
     @click.self="$emit('close-modal')"
     class="h-screen w-screen flex justify-center items-center fixed top-0 left-0 bg-gray-200 bg-opacity-50 z-20"
   >
@@ -22,6 +22,7 @@
         </div>
         <div class="w-full">
           <img
+            alt="image"
             :src="require('../../assets/image/businessman.png')"
             class="w-[100px] ml-8 rounded-full border-white z-10"
           />
@@ -76,7 +77,7 @@
   content: "";
   position: absolute;
   right: -60px;
-  top: -20 px;
+  top: -5px;
   width: 100px;
   height: 30px;
   rotate: 45deg;
@@ -84,8 +85,8 @@
 </style>
 
 <script setup>
-const { showModal, userInfo } = defineProps({
-  showModal: {
+const { show, userInfo } = defineProps({
+  show: {
     type: Boolean,
     default: false,
   },

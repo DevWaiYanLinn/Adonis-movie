@@ -34,12 +34,14 @@ Route.group(() => {
   Route.get("/users/create", "UsersController.create");
   Route.post("/users", "UsersController.store");
 
+  Route.delete("/users/:id", "UsersController.destroy");
+
   Route.get("/roles/create", "RolesController.create");
   Route.get("/roles", "RolesController.index");
 
   Route.get("/movies/create", "MoviesController.create");
 
-  Route.get("/threaters", "ThreatersController.index");
+
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");

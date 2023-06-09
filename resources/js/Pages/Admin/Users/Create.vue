@@ -196,7 +196,7 @@ import { useForm } from "@inertiajs/vue3";
 import { router } from "@inertiajs/vue3";
 
 const toast = useToast();
-const { roles, gendersm, cinemas } = defineProps([
+const { roles, cinemas } = defineProps([
   "roles",
   "genders",
   "cinemas",

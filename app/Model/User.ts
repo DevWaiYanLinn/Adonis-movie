@@ -92,6 +92,14 @@ export default class User {
     });
   }
 
+  static  destroy(id:string) {
+    return prisma.user.delete({
+      where:{
+        id
+      }
+    })
+  }
+
   private beforeSave({ roleID, cinemaID, ...others }: TUser): TNewUser {
     others.password = Crypto.hashSync(others.password);
     return {

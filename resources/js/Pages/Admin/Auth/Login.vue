@@ -25,7 +25,7 @@
         />
       </div>
       <div class="mt-5">
-        <button class="w-full py-2 rounded-md text-white focus:bg-purple-500 bg-purple-600"> Login </button>
+        <button class="w-full py-2 rounded-md text-white active:bg-purple-400 bg-purple-500"> WELCOME </button>
       </div>
     </form>
   </div>

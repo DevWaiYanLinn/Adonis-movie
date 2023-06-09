@@ -1,10 +1,14 @@
 <template>
   <Teleport to="#modal">
     <EmployeeCard
-      :showModal="showModal"
-      @close-modal="showModal = false"
-      :userInfo="userInfo"
+      :show="modal.USER_INFO.show"
+      @close-modal="modal.USER_INFO.show = false"
+      :userInfo="modal.USER_INFO.data"
     />
+    <DeleteCard :show="modal.DELETE_USER.show"
+                @modal-action="deleteUser(modal.DELETE_USER)"
+                @close-modal="modal.DELETE_USER.show = false"
+                :processing="modal.DELETE_USER.processing"/>
   </Teleport>
   <div class="text-gray-500">
     <div class="flex flex-wrap justify-center gap-2 my-4">
@@ -130,118 +134,118 @@
         <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
           <table class="min-w-full leading-normal">
             <thead>
-              <tr>
-                <th
-                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  User
-                </th>
-                <th
-                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Email
-                </th>
-                <th
-                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Created at
-                </th>
-                <th
-                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Status
-                </th>
-                <th
-                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Actions
-                </th>
-              </tr>
+            <tr>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              >
+                User
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              >
+                Email
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              >
+                Created at
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              >
+                show
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              >
+                Actions
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr v-for="user in users" :key="user.id">
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 w-10 h-10">
-                      <img
-                        class="w-full h-full rounded-full"
-                        :src="require('../../../assets/image/businessman.png')"
-                        alt=""
+            <tr v-for="user in users" :key="user.id">
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 w-10 h-10">
+                    <img
+                      class="w-full h-full rounded-full"
+                      :src="require('../../../assets/image/businessman.png')"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-3">
+                    <p class="text-gray-900 whitespace-no-wrap">
+                      {{ user.firstName + " " + user.lastName }}
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p class="text-gray-900 whitespace-no-wrap">
+                  {{ user.email }}
+                </p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p class="text-gray-900 whitespace-no-wrap">
+                  {{ moment(user.createdAt).format("MMMM D, YYYY") }}
+                </p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <Badge :show="user.show"/>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <div class="flex gap-4">
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-yellow-500"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
                       />
-                    </div>
-                    <div class="ml-3">
-                      <p class="text-gray-900 whitespace-no-wrap">
-                        {{ user.firstName + " " + user.lastName }}
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p class="text-gray-900 whitespace-no-wrap">
-                    {{ user.email }}
-                  </p>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p class="text-gray-900 whitespace-no-wrap">
-                    {{ moment(user.createdAt).format("MMMM D, YYYY") }}
-                  </p>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <Badge :status="user.status" />
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div class="flex gap-4">
-                    <button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5 text-yellow-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                        />
-                      </svg>
-                    </button>
-                    <button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5 text-red-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                    <button @click="showUserInfo(user.id)">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5 text-purple-400"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                    </svg>
+                  </button>
+                  <button @click="show({type:'DELETE_USER', user})">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-red-500"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                  <button @click="show({type:'USER_INFO', user})">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-purple-400"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
             </tbody>
           </table>
           <div
@@ -271,6 +275,7 @@
 
 <script>
 import AdminLayout from "@/PageLayout/AdminLayout.vue";
+
 export default {
   layout: AdminLayout,
 };
@@ -278,15 +283,30 @@ export default {
 <script setup>
 import PageTab from "@/components/PageTab.vue";
 import Badge from "@/components/Badge.vue";
-import { router } from "@inertiajs/vue3";
-import { ref } from "vue";
+import {router} from "@inertiajs/vue3";
+import {ref, reactive} from "vue";
 import * as moment from "moment";
 import EmployeeCard from "@/components/Modals/EmployeeCard.vue";
-const { users, qs } = defineProps(["users", "qs"]);
-const showModal = ref(false);
-const userInfo = ref({});
-const searchTimeOut = ref();
+import DeleteCard from "@/components/Modals/DeleteCard.vue";
+import {useToast} from "vue-toastification";
 
+const toast = useToast();
+
+const {users, qs} = defineProps(["users", "qs"]);
+const modal = reactive(
+  {
+    'USER_INFO': {
+      show: false,
+      data: {}
+    },
+    'DELETE_USER': {
+      show: false,
+      data: {},
+      processing: false,
+    },
+  }
+)
+const searchTimeOut = ref();
 const searchUser = (data) => {
   if (searchTimeOut.value) clearTimeout(searchTimeOut.value);
   searchTimeOut.value = setTimeout(() => {
@@ -298,8 +318,36 @@ const searchUser = (data) => {
   }, 500);
 };
 
-const showUserInfo = (id) => {
-  userInfo.value = users.find((user) => user.id === id) || {};
-  showModal.value = true;
-};
+const show = ({type, user}) => {
+  switch (type) {
+    case 'USER_INFO':
+      modal.USER_INFO.data = user
+      modal.USER_INFO.show = true;
+      break;
+    case 'DELETE_USER':
+      modal.DELETE_USER.data = user
+      modal.DELETE_USER.show = true;
+      break;
+    default:
+      break;
+  }
+}
+
+const deleteUser = (modal) => {
+  router.delete(`/admin/users/${modal.data.id}`, {
+    onProgress: progress => {
+      modal.processing = true;
+    },
+    onSuccess: page => {
+       toast.success('DELETED SUCCESSFULLy')
+    },
+    onError: errors => {
+    },
+    onFinish: visit => {
+      modal.processing = false;
+      modal.show = false;
+      modal.data = {};
+    },
+  })
+}
 </script>

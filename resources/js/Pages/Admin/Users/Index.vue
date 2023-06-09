@@ -339,7 +339,7 @@ const deleteUser = (modal) => {
       modal.processing = true;
     },
     onSuccess: page => {
-       toast.success('DELETED SUCCESSFULLy')
+       toast.success('Deleted Successfully')
     },
     onError: errors => {
     },

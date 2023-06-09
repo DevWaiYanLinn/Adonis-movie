@@ -20,7 +20,6 @@
   </div>
 </template>
 <script setup>
-import { ref, toRef } from "vue";
 const { label, error, id, placeholder, ...props } = defineProps({
   label: {
     type: String,

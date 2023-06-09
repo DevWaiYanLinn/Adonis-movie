@@ -6,7 +6,6 @@ const roleSeeder = async (prisma: PrismaClient) => {
     "General Admin",
     "Staff Admin",
     "Staff",
-    "Casher",
   ];
   await prisma.role.createMany({
     data: roles.map((role) => {

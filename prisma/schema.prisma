@@ -13,8 +13,8 @@ datasource db {
 model Role {
   id           String       @id @default(auto()) @map("_id") @db.ObjectId
   name         String       @unique
-  permissinIDs String[]     @db.ObjectId
-  permissions  Permission[] @relation(fields: [permissinIDs], references: [id])
+  permissionIDs String[]     @db.ObjectId
+  permissions  Permission[] @relation(fields: [permissionIDs], references: [id])
   userIDs      String[]     @db.ObjectId
   users        User[]       @relation(fields: [userIDs], references: [id])
   createdAt    DateTime     @default(now()) @db.Timestamp
@@ -57,6 +57,8 @@ model User {
   email           String    @unique
   firstName       String
   lastName        String
+  NRC             String?
+  Religion        String?
   gender          Gender    @default(Other)
   phoneNumber     String?
   dateOfBirth     DateTime?
@@ -104,6 +106,7 @@ model Hall {
   cinemaID  String     @db.ObjectId
   showTime  ShowTime[]
   rows      Row[]
+  status    Boolean    @default(true)
   createdAt DateTime   @default(now()) @db.Timestamp
   updatedAt DateTime   @updatedAt @db.Timestamp
 }

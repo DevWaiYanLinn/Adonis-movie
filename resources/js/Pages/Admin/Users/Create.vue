@@ -216,6 +216,7 @@ const form = useForm({
 const createUser = () => {
   form.post("/admin/users", {
     onSuccess: (page) => {
+      toast.success('Created Successfully')
       router.get("/admin/users", {}, { only: ["users"] });
     },
     onError: (errors) => {

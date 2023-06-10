@@ -2,14 +2,14 @@ import type { PrismaClient } from "@prisma/client";
 
 const permissionSeeder = async (prisma: PrismaClient) => {
   const permissions = [
-    "Creater User", 
-    "Edit User", 
-    "Show User", 
-    "Update User",
-    "Creater  Cinema", 
-    "Edit Cinema", 
-    "Show  Cinema",
-    "Update Cinema",
+    "Create_User",
+    "Edit_User",
+    "Show_User",
+    "Update_User",
+    "Create_Cinema",
+    "Edit_Cinema",
+    "Show_Cinema",
+    "Update_Cinema",
 ];
   await prisma.permission.createMany({
     data: permissions.map((permission) => {

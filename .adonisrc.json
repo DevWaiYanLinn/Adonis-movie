@@ -21,7 +21,8 @@
       "environment": [
         "web"
       ]
-    }
+    },
+    "./start/validator"
   ],
   "providers": [
     "./providers/AppProvider",

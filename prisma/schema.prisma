@@ -11,14 +11,14 @@ datasource db {
 }
 
 model Role {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  name         String       @unique
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  name          String       @unique
   permissionIDs String[]     @db.ObjectId
-  permissions  Permission[] @relation(fields: [permissionIDs], references: [id])
-  userIDs      String[]     @db.ObjectId
-  users        User[]       @relation(fields: [userIDs], references: [id])
-  createdAt    DateTime     @default(now()) @db.Timestamp
-  updatedAt    DateTime     @updatedAt @db.Timestamp
+  permissions   Permission[] @relation(fields: [permissionIDs], references: [id])
+  userIDs       String[]     @db.ObjectId
+  users         User[]       @relation(fields: [userIDs], references: [id])
+  createdAt     DateTime     @default(now()) @db.Timestamp
+  updatedAt     DateTime     @updatedAt @db.Timestamp
 }
 
 model Permission {

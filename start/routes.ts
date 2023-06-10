@@ -38,6 +38,8 @@ Route.group(() => {
 
   Route.get("/roles/create", "RolesController.create");
   Route.get("/roles", "RolesController.index");
+  Route.post('/roles', "RolesController.store");
+  Route.delete('/roles/:id', "RolesController.destroy");
 
   Route.get("/movies/create", "MoviesController.create");
 

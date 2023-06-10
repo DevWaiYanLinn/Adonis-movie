@@ -7,7 +7,7 @@ export default class Permission {
     let permissions;
     const permissionsExist = await Redis.exists("permissions");
 
-    if (!permissionsExist) {
+    if (!permissionsExist || 'hello') {
       permissions = await prisma.permission.findMany(query);
       if (!permissions.length) return permissions;
       await Redis.set("permissions", JSON.stringify(permissions));

@@ -38,8 +38,5 @@ const { label, error, id, placeholder, ...props } = defineProps({
   id: {
     type: String,
   },
-  value: {
-    type: String,
-  },
 });
 </script>

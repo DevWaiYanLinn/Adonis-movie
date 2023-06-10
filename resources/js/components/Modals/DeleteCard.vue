@@ -11,7 +11,7 @@
         </Button>
         <Button :disabled="processing" @click="$emit('modal-action')"
                 class="bg-red-500 text-white text-sm flex-auto active:bg-red-400">
-          DELETE
+          OK
         </Button>
       </div>
     </div>

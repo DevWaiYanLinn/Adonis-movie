@@ -3,13 +3,13 @@
     <input
       type="checkbox"
       class="sr-only peer"
-      :value="false"
+      :value="props.value"
       :name="props.label.toLowerCase().replace(' ', '_')"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('change-value', {checked:$event.target.checked, id:$event.target.value})"
     />
-    <div
+    <span
       class="w-11 h-6 bg-gray-200 peer-focus:outline-none dark:peer-focus:ring-purple-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"
-    ></div>
+    ></span>
     <span class="ml-3 text-xs font-medium text-grey-darker dark:text-gray-300">{{ props.label }}</span>
   </label>
 </template>
@@ -17,15 +17,9 @@
 const props = defineProps({
   label: {
     type: String,
-    default: ''
   },
-  label: {
+  value: {
     type: String,
-    default: '0'
-  },
-  value:{
-    type: Boolean,
-    default:false,
   }
 })
 </script>

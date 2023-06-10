@@ -1,20 +1,50 @@
-
 import prisma from "../../start/prisma";
 
+type  TRole = {
+  name: string;
+  permissions: {
+    connect: Array<{ id: string }>
+  }
+}
+
 export default class Role {
-  constructor() {}
-  static  findMany(query = {}) {
-    return prisma.role.findMany(query);
-    // let permissions;
-    // const permissionsExist = await Redis.exists("permissions");
-    // if (!permissionsExist) {
-    //   permissions = await prisma.role.findMany(query);
-    //   if(!permissions.length) return permissions;
-    //   await Redis.set("permissions", JSON.stringify(permissions));
-    // } else {
-    //   const cachedPermissions = await Redis.get("permissions");
-    //   permissions = cachedPermissions ? JSON.parse(cachedPermissions) : [];
-    // }
-    // return permissions;
+  protected data:TRole;
+
+  constructor(data) {
+    this.data = this.beforeSave(data)
+  }
+
+  static findMany() {
+    return prisma.role.findMany({
+      select:{
+        id:true,
+        name:true,
+        permissions:true,
+        createdAt:true,
+      }
+    });
+  }
+
+  public save() {
+    return prisma.role.create({
+      data: this.data
+    })
+  }
+
+  static  destroy(id:string) {
+    return prisma.role.delete({
+      where:{
+        id
+      }
+    })
+  }
+
+  private beforeSave({name, permissions}):TRole {
+    return {
+      name,
+      permissions: {
+        connect: permissions
+      }
+    }
   }
 }

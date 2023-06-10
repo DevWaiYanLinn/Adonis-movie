@@ -56,7 +56,7 @@ export default class CreateUserValidator {
     "email.required": "Please enter a valid email address.",
     "email.email":
       "Please use a valid email format (e.g., example@example.com).",
-    "firstame.required": "Please enter the first name.",
+    "firstName.required": "Please enter the first name.",
     "lastName.required": "Please enter the last name.",
     "password.required": "Please enter a password.",
     "password.minLength": "Password must be at least 8 characters long.",

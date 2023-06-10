@@ -39,7 +39,7 @@ type TNewUser = {
 };
 
 export default class User {
-  private data: TNewUser;
+  protected data: TNewUser;
 
   constructor(data) {
     this.data = this.beforeSave(data);

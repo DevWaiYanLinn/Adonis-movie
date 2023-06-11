@@ -95,10 +95,13 @@ export class PrismaAuthProvider<User extends PrismaAuthBase>
       where: {
         [this.config.identifierKey]: id as any,
       },
+      include:{
+        roles:true
+      }
     });
     return this.getUserFor(user);
   }
-  
+
   public async findByUid(uidValue: string) {
     const orStatements = this.config.uids.map((field) => ({
       [field]: uidValue,

@@ -1,8 +1,8 @@
 <template>
   <Teleport to="#modal">
     <DeleteCard :show="showDeleteModal" @close-modal="showDeleteModal=false" @modal-action="deleteRole(deleteID)"/>
-    <PermissionCard @close-modal="modal.PERMISSIONS.show = false" :show="modal.PERMISSIONS.show"
-                    :permissons="permissions"/>
+    <PermissionCard :auth="auth" @close-modal="modal.PERMISSIONS.show = false" :show="modal.PERMISSIONS.show"
+                    :permissions="permissions"/>
   </Teleport>
   <div>
     <!--    <role-page-tab />-->
@@ -254,7 +254,7 @@ import PageTab from "@/components/PageTab.vue";
 import {router} from "@inertiajs/vue3";
 import PermissionCard from "@/components/Modals/PermissionCard.vue";
 
-const {roles, permissions} = defineProps(['roles', 'permissions'])
+const {roles, permissions, auth} = defineProps(['roles', 'permissions', 'auth'])
 const showDeleteModal = ref(false);
 const deleteID = ref(null);
 const toast = useToast();

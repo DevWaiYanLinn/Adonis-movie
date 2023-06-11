@@ -14,7 +14,15 @@ Inertia.share({
   errors: (ctx) => {
     return ctx.session.flashMessages.get('errors');
   },
-  qs:(ctx) => {
+  qs: (ctx) => {
     return ctx.request.qs();
+  },
+  auth: async (ctx) => {
+    await ctx.auth.use('web').authenticate()
+    const user: any = ctx.auth.user || {}
+    delete user?.password;
+    return {
+      user
+    }
   }
 }).version(() => Inertia.manifestFile('public/assets/manifest.json'));

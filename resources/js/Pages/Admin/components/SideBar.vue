@@ -4,7 +4,7 @@
       <span class="text-purple-500 font-normal font-mono">Adonis Movie</span>
     </h1>
     <ul class="p-3 flex flex-col gap-1">
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -32,7 +32,7 @@
           >
         </inertia-link>
       </li>
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin/cinemas"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -56,11 +56,11 @@
           <span
             class="ml-2 text-gray-400 text-[1rem] font-normal tracking-wide"
             :class="{ 'text-purple-500': /\/admin\/cinemas.*/.test($page.url) }"
-            >Cinemas Mangement</span
+            >Cinemas</span
           >
         </inertia-link>
       </li>
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin/movies"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -83,11 +83,11 @@
           <span
             class="ml-2 text-gray-400 text-[1rem] font-normal tracking-wide"
             :class="{ 'text-purple-500': $page.url.startsWith('/admin/movies') }"
-            >Movie Mangement</span
+            >Movies</span
           >
         </inertia-link>
       </li>
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin/users"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -111,11 +111,11 @@
           <span
             class="ml-2 text-gray-400 text-[1rem] font-normal tracking-wide"
             :class="{ 'text-purple-500': /\/admin\/users.*/.test($page.url) }"
-            >Users Mangement</span
+            >Users</span
           >
         </inertia-link>
       </li>
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin/roles"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -140,10 +140,10 @@
             class="ml-2 text-gray-400 font-medium text-[1rem] tracking-wide"
             title="Permission Management"
             :class="{ 'text-purple-500': /\/admin\/roles.*/.test($page.url) }"
-            >Role Mangement</span>
+            >Roles</span>
         </inertia-link>
       </li>
-      <li>
+      <li class="ml-3">
         <inertia-link
           href="/admin/roles"
           class="flex items-center cursor-pointer py-2 pl-1 rounded-md"
@@ -167,7 +167,7 @@
           <span
             class="ml-2 text-[1rem]  text-gray-400 font-normal"
             title="Permission Management"
-            >Permissions Mange....</span
+            >Permissions</span
           >
         </inertia-link>
       </li>

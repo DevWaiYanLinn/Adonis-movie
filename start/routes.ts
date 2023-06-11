@@ -50,6 +50,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get("/login", "AuthController.login");
+  Route.post("/login", "AuthController.authenticated")
 })
   .prefix("/admin/auth")
   .namespace("App/Controllers/Http/Admin/Auth");

@@ -77,7 +77,7 @@
   content: "";
   position: absolute;
   right: -60px;
-  top: -5px;
+  top: -2px;
   width: 100px;
   height: 30px;
   rotate: 45deg;

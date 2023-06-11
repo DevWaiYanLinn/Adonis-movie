@@ -11,6 +11,7 @@
     <input
       autocomplete="off"
       :id="id"
+      :type="type"
       :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
       class="focus:outline-none focus:border-purple-400 appearance-none block w-full rounded py-3 px-4 border-2"
@@ -20,7 +21,7 @@
   </div>
 </template>
 <script setup>
-const { label, error, id, placeholder, ...props } = defineProps({
+const { label, error, type, id, placeholder, ...props } = defineProps({
   label: {
     type: String,
   },

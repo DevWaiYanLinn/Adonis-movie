@@ -6,10 +6,10 @@ import CreateRoleValidator from "App/Validators/CreateRoleValidator";
 export default class RolesController {
   public async index({inertia}: HttpContextContract) {
     const roles = await Role.findMany();
-    const permissions = await  Permission.findMany();
+    const permissions = await Permission.findMany();
     return inertia.render("Admin/Roles/Index", {
-      roles,
-      permissions
+      roles: roles,
+      permissions: permissions
     })
   }
 
@@ -27,7 +27,7 @@ export default class RolesController {
     return response.redirect('/admin/roles')
   }
 
-  public  async  destroy({request, response}: HttpContextContract) {
+  public async destroy({request, response}: HttpContextContract) {
     await Role.destroy(request.param('id'))
     return response.redirect('/admin/roles')
   }

@@ -9,6 +9,7 @@
 */
 
 import Inertia from '@ioc:EidelLev/Inertia';
+import * as console from "console";
 
 Inertia.share({
   errors: (ctx) => {
@@ -18,9 +19,14 @@ Inertia.share({
     return ctx.request.qs();
   },
   auth: async (ctx) => {
-    await ctx.auth.use('web').authenticate()
-    const user: any = ctx.auth.user || {}
-    delete user?.password;
+    let user:any = {}
+    try {
+      await ctx.auth.use('web').authenticate()
+      user = ctx.auth.user || {}
+      delete user?.password;
+    }catch (error) {
+      console.log('SESSION_EXPIRE')
+    }
     return {
       user
     }

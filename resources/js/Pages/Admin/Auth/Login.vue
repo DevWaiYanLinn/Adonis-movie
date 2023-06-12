@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex justify-center items-center">
-    <form @submit.prevent="login" class="max-w-md w-1/2 p-8 shadow-sm bg-white rounded-lg">
+    <form @submit.prevent="login" class="max-w-md w-1/2 text-gray-500 p-8 shadow-sm bg-white rounded-lg">
       <div class="text-center flex justify-center items-center">
         <img
           alt="movie"

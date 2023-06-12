@@ -17,7 +17,6 @@ export default class AppProvider {
     const Hash = this.app.container.resolveBinding("Adonis/Core/Hash");
 
     if (this.app.environment === 'web') {
-      await import('../start/socket')
     }
     const { PrismaAuthProvider } = await import("./PrismaProvider/index");
 

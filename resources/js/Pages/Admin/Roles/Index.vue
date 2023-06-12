@@ -1,8 +1,13 @@
 <template>
   <Teleport to="#modal">
-    <DeleteCard :show="showDeleteModal" @close-modal="showDeleteModal=false" @modal-action="deleteRole(deleteID)"/>
-    <PermissionCard :auth="auth" @close-modal="modal.PERMISSIONS.show = false" :show="modal.PERMISSIONS.show"
-                    :permissions="permissions"/>
+    <DeleteCard :show="modal.DELETE_ROLE.show"
+                @close-modal="modal.DELETE_ROLE.show = false"
+                @modal-action="deleteRole(modal.DELETE_ROLE.role)"/>
+    <PermissionCard
+      :role="modal.PERMISSIONS.role"
+      :show="modal.PERMISSIONS.show"
+      :permissions="formatPermissions()"
+      @close-modal="modal.PERMISSIONS.show = false"/>
   </Teleport>
   <div>
     <!--    <role-page-tab />-->
@@ -186,7 +191,7 @@
                       />
                     </svg>
                   </button>
-                  <button @click="showDeleteModal = true; deleteID = role.id">
+                  <button @click="showModal({type:'DELETE_ROLE', payload:role})">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -202,7 +207,7 @@
                       />
                     </svg>
                   </button>
-                  <button @click="modal.PERMISSIONS.show = true">
+                  <button @click="showModal({type: 'PERMISSIONS', payload: role})">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="w-5 h-5 text-purple-500">
                       <path stroke-linecap="round" stroke-linejoin="round"
@@ -249,29 +254,43 @@ export default {
 import {useToast} from "vue-toastification";
 import * as moment from "moment";
 import DeleteCard from "@/components/Modals/DeleteCard.vue";
-import {reactive, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import PageTab from "@/components/PageTab.vue";
 import {router} from "@inertiajs/vue3";
 import PermissionCard from "@/components/Modals/PermissionCard.vue";
 
-const {roles, permissions, auth} = defineProps(['roles', 'permissions', 'auth'])
+const {permissions, auth} = defineProps(['roles', 'permissions'])
 const showDeleteModal = ref(false);
-const deleteID = ref(null);
 const toast = useToast();
 
 const modal = reactive({
   PERMISSIONS: {
     show: false,
-    data: {}
+    role: {}
   },
   DELETE_ROLE: {
     show: false,
+    role: {}
   }
-})
+});
 
+const showModal = ({type, payload}) => {
+  switch (type) {
+    case 'PERMISSIONS':
+      modal[type].show = true;
+      modal[type].role = payload;
+      break;
+    case 'DELETE_ROLE':
+      modal[type].show = true;
+      modal[type].role = payload;
+      break;
+    default:
+      break;
+  }
+}
 
-const deleteRole = (id) => {
-  router.delete(`/admin/roles/${id}`, {
+const deleteRole = (role) => {
+  router.delete(`/admin/roles/${role.id}`, {
     onProgress: progress => {
     },
     onSuccess: page => {
@@ -283,6 +302,18 @@ const deleteRole = (id) => {
       showDeleteModal.value = false;
     },
   })
+}
+
+const formatPermissions = () => {
+  const format = {};
+  permissions.forEach(function (permission) {
+    const group = permission.name.split('_')[1];
+    if (!format[group]) {
+      format[group] = [];
+    }
+    format[group].push(permission)
+  })
+  return format;
 }
 </script>
 

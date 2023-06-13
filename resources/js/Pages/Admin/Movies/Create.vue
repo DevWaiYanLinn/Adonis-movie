@@ -146,7 +146,7 @@
         </div>
       </div>
       <div class="flex justify-end items-center">
-        <button class="px-5 py-2 rounded-md text-white bg-purple-500">
+        <button type="submit" class="px-5 py-2 rounded-md text-white bg-purple-500">
           CREATE
         </button>
       </div>
@@ -180,7 +180,7 @@ const form = useForm({
   description:'',
 })
 
-const createPost = () => {
+const createMovie = () => {
   console.log({
     title:form.title,
     genre:form.genre,
@@ -191,7 +191,4 @@ const createPost = () => {
     description:form.description
   })
 }
-const createCinema = () => {
-  toast.success("Hello Toast", {});
-};
 </script>

@@ -119,7 +119,7 @@ model Movie {
   director    String
   cast        String?
   description String?
-  releaseDate String?
+  releaseDate DateTime?
   showTime    ShowTime[]
   createdAt   DateTime   @default(now()) @db.Timestamp
   updatedAt   DateTime   @updatedAt @db.Timestamp

@@ -42,7 +42,7 @@ Route.group(() => {
   Route.delete('/roles/:id', "RolesController.destroy");
 
   Route.get("/movies/create", "MoviesController.create");
-
+  Route.get("movies", "MoviesController.index");
 
 })
   .prefix("/admin")

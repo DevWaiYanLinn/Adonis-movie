@@ -1,5 +1,6 @@
 import { schema, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import {rules} from "@adonisjs/validator/build/src/Rules";
 
 export default class CreateMovieValidator {
   constructor(protected ctx: HttpContextContract) {}
@@ -25,12 +26,14 @@ export default class CreateMovieValidator {
    */
   public schema = schema.create({
     title:schema.string(),
-    genres:schema.string(),
-    duration:schema.string(),
+    genre:schema.string(),
+    duration:schema.string(
+      [rules.regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/)]
+    ),
     director:schema.string(),
-    cast:schema.string.nullable(),
-    releaseDate:schema.string.nullable(),
-    description:schema.string.nullable()
+    cast:schema.string.optional(),
+    releaseDate:schema.string.optional(),
+    description:schema.string.optional()
   })
 
   /**
@@ -44,5 +47,10 @@ export default class CreateMovieValidator {
    * }
    *
    */
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+      'title.required': 'Please enter the title',
+      'genre.required': 'Please enter the genre',
+      'duration.required': 'Please enter the duration',
+      'director.required': 'Please enter the director name'
+  }
 }

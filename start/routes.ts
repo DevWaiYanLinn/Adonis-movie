@@ -20,7 +20,7 @@
 
 import Route from "@ioc:Adonis/Core/Route";
 
-Route.get("/", async ({ response }) => {
+Route.get("/", async ({response}) => {
   return response.redirect("/admin/auth/login");
 });
 
@@ -42,11 +42,19 @@ Route.group(() => {
   Route.delete('/roles/:id', "RolesController.destroy");
 
   Route.get("/movies/create", "MoviesController.create");
-  Route.get("movies", "MoviesController.index");
+  Route.post('/movies', "MoviesController.store")
+  Route.get("/movies", "MoviesController.index");
+
+  Route.get("/movies/:id/show-times/create", "ShowTimesController.create")
 
 })
   .prefix("/admin")
   .namespace("App/Controllers/Http/Admin");
+
+Route.group(() => {
+  Route.get('/', "HomeController.index")
+}).prefix("/staff")
+  .namespace("App/Controllers/Http/Staff");
 
 Route.group(() => {
   Route.get("/login", "AuthController.login");

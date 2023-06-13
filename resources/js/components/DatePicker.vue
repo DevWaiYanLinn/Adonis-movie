@@ -8,6 +8,8 @@
       {{ label }}
     </label>
     <VueDatePicker
+      :enable-time-picker="timePicker"
+      :range="range"
       v-model="date"
       @update:model-value="handleDate"
       :id="id"
@@ -23,11 +25,12 @@
 <script setup>
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import { ref, toRef, watch } from "vue";
+import {ref} from "vue";
+
 const date = ref();
 const emit = defineEmits(["update:modelValue"]);
 
-const { label, id } = defineProps({
+const {label, id, range} = defineProps({
   label: {
     type: String,
   },
@@ -38,6 +41,14 @@ const { label, id } = defineProps({
     type: Array,
     default: [],
   },
+  range: {
+    type: Boolean,
+    default: false
+  },
+  timePicker:{
+    type: Boolean,
+    default:false
+  }
 });
 
 const handleDate = (date) => {
@@ -49,7 +60,7 @@ const handleDate = (date) => {
   padding-top: 0.75rem !important;
   padding-bottom: 0.75rem !important;
   border-width: 2px;
-} 
+}
 
 .date-picker.error .dp__input_readonly {
   border-color: rgb(239 68 68 / 1);

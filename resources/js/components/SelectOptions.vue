@@ -1,5 +1,5 @@
 <template>
-  <div class="md:w-full">
+  <div class="md:w-full text-gray-500">
     <label
       class="block uppercase tracking-wide text-grey-darker text-xs font-medium mb-2"
       :for="id"

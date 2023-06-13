@@ -13,6 +13,7 @@
       :id="id"
       :type="type"
       :placeholder="placeholder"
+      :disabled="disabled"
       @input="$emit('update:modelValue', $event.target.value)"
       class="focus:outline-none focus:border-purple-400 appearance-none block w-full rounded py-3 px-4 border-2"
       :class="{ 'border-red-500 !border focus:outline-transparent': error.length }"
@@ -39,5 +40,9 @@ const { label, error, type, id, placeholder, ...props } = defineProps({
   id: {
     type: String,
   },
+  disabled:{
+    type:Boolean,
+    default:false
+  }
 });
 </script>

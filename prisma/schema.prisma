@@ -120,32 +120,36 @@ model Movie {
   cast        String?
   description String?
   releaseDate DateTime?
+  image       String?
   showTime    ShowTime[]
   createdAt   DateTime   @default(now()) @db.Timestamp
   updatedAt   DateTime   @updatedAt @db.Timestamp
 }
 
 model ShowTime {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  cinemaID  String   @db.ObjectId
-  cinema    Cinema   @relation(fields: [cinemaID], references: [id])
-  hallID    String   @db.ObjectId
-  hall      Hall     @relation(fields: [hallID], references: [id])
-  movieID   String   @db.ObjectId
-  movie     Movie    @relation(fields: [movieID], references: [id])
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  cinemaID  String     @db.ObjectId
+  cinema    Cinema     @relation(fields: [cinemaID], references: [id])
+  hallID    String     @db.ObjectId
+  hall      Hall       @relation(fields: [hallID], references: [id])
+  movieID   String     @db.ObjectId
+  movie     Movie      @relation(fields: [movieID], references: [id])
   Ticket    Ticket[]
-  movieTime DateTime
-  createdAt DateTime @default(now()) @db.Timestamp
-  updatedAt DateTime @updatedAt @db.Timestamp
+  movieTime DateTime[]
+  startDay  DateTime   @default(now()) @db.Timestamp
+  endDay    DateTime   @default(now()) @db.Timestamp
+  createdAt DateTime   @default(now()) @db.Timestamp
+  updatedAt DateTime   @updatedAt @db.Timestamp
 }
 
 model Ticket {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   showTimeID String    @db.ObjectId
   showTime   ShowTime  @relation(fields: [showTimeID], references: [id])
+  date       DateTime?
+  Booking    Booking[]
   createdAt  DateTime  @default(now()) @db.Timestamp
   updatedAt  DateTime  @updatedAt @db.Timestamp
-  Booking    Booking[]
 }
 
 model Booking {

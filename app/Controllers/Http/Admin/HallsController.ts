@@ -3,7 +3,7 @@ import prisma from "../../../../start/prisma";
 
 export default class HallsController {
   public async index({}: HttpContextContract) {
-    return await prisma.hall.findUnique({
+    return  prisma.hall.findUnique({
       where: {
         id: "646cecf6441700f1a695cabf",
       },
@@ -42,5 +42,13 @@ export default class HallsController {
     return inertia.render("Admin/Halls/Show", {
       hall,
     });
+  }
+
+  static  async findByByCinemaID(id:string) {
+    return prisma.hall.findMany({
+      where:{
+        cinemaID:id
+      }
+    })
   }
 }

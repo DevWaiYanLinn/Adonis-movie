@@ -15,6 +15,18 @@ export  default  class  Movie {
     this.data = data;
   }
 
+  static fineMany() {
+    return prisma.movie.findMany();
+  }
+
+  static  findFirst(id:string) {
+    return prisma.movie.findFirst({
+      where:{
+        id
+      }
+    })
+  }
+
   public save(data=this.data) : Promise<any> {
     return prisma.movie.create({
       data

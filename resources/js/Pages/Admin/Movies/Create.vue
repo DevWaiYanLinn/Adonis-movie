@@ -3,7 +3,7 @@
     <div class="flex flex-wrap justify-center gap-2 my-4">
       <page-tab
         label="Create"
-        url="/admin/users/create"
+        url="/admin/movies/create"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
       </page-tab>
       <page-tab
         label="Lists"
-        url="/admin/users"
+        url="/admin/movies"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +65,7 @@
         <div class="md:w-1/2 mx-3 mb-6 md:mb-0">
           <TextField
             v-model="form.title"
+            :error="form.errors.title"
             label="Title"
             placeholder="Jhon Wick"
           />
@@ -72,6 +73,7 @@
         <div class="md:w-1/2 mx-3">
           <TextField
             v-model="form.genre"
+            :error="form.errors.genre"
             label="Genre"
             placeholder="Action"
           />
@@ -81,13 +83,15 @@
         <div class="md:w-1/2 mx-3">
           <TextField
             v-model="form.duration"
+            :error="form.errors.duration"
             label="Duration"
-            placeholder="02:00 hrs"
+            placeholder="02:00"
           />
         </div>
         <div class="md:w-1/2 mx-3">
           <TextField
             v-model="form.director"
+            :error="form.errors.director"
             label="Director"
             placeholder="Smith"
           />
@@ -181,14 +185,10 @@ const form = useForm({
 })
 
 const createMovie = () => {
-  console.log({
-    title:form.title,
-    genre:form.genre,
-    duration:form.duration,
-    director:form.director,
-    cast:form.cast,
-    releaseDate:form.releaseDate,
-    description:form.description
+  form.post('/admin/movies', {
+    onError: errors => {
+      console.log((errors))
+    }
   })
 }
 </script>

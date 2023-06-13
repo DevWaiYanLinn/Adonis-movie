@@ -66,7 +66,7 @@
       </page-tab>
     </div>
     <!-- component -->
-    <div class="antialiased font-sans bg-gray-200">
+    <div class="font-sans bg-gray-200">
       <div class="my-2 flex sm:flex-row flex-col">
         <div class="flex flex-row mb-1 sm:mb-0">
           <div class="relative">

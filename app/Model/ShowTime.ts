@@ -14,6 +14,21 @@ export default class ShowTime {
     })
   }
 
+  static findMany(){
+    return prisma.showTime.findMany({
+      select:{
+        id:true,
+        startDay:true,
+        endDay:true,
+        movieTime:true,
+        cinema:true,
+        movie:true,
+        hall:true,
+        createdAt:true
+      }
+    })
+  }
+
   private beforeSave(data) {
     const {cinemaID, hallID, movieID, startDay, endDay, movieTime} = data;
     return {

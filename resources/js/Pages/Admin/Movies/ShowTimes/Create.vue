@@ -1,5 +1,6 @@
 <template>
-  <div class="text-gray-500 mb-10">
+  <div class="text-gray-500">
+    <PageTab/>
   </div>
   <form @submit.prevent="createShowTime"
         class="bg-white text-gray-500 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
@@ -71,13 +72,13 @@ export default {
 };
 </script>
 <script setup>
-import PageTab from "@/components/PageTab.vue";
 import TextField from "@/components/TextField.vue";
 import SelectOptions from "@/components/SelectOptions.vue";
 import {useForm} from "@inertiajs/vue3";
 import {computed, reactive} from "vue";
 import DatePicker from "@/components/DatePicker.vue";
 import TextArea from "@/components/TextArea.vue";
+import PageTab from "@/Pages/Admin/Movies/components/PageTab.vue";
 
 const {movie, halls, cinemas, qs} = defineProps({
   movie: {

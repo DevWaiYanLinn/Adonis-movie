@@ -33,7 +33,6 @@ Route.group(() => {
   Route.get("/users", "UsersController.index");
   Route.get("/users/create", "UsersController.create");
   Route.post("/users", "UsersController.store");
-
   Route.delete("/users/:id", "UsersController.destroy");
 
   Route.get("/roles/create", "RolesController.create");
@@ -46,11 +45,12 @@ Route.group(() => {
   Route.get("/movies", "MoviesController.index");
 
   Route.post("/movies/show-times", "ShowTimesController.store")
-  Route.get("/movies/:id/show-times/create", "ShowTimesController.create")
+  Route.get("/movies/show-times/create", "ShowTimesController.create")
+  Route.get('/movies/show-times', "ShowTimesController.index")
 
-  Route.get('movies/seats/temp', ({inertia}) => {
-    return inertia.render('Admin/Movies/ShowTimes/Seats/Temp')
-  })
+  // Route.get('movies/seats/temp', ({inertia}) => {
+  //   return inertia.render('Admin/Movies/ShowTimes/dSeats/Temp')
+  // })
 
 })
   .prefix("/admin")

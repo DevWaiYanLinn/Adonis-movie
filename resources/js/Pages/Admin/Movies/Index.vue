@@ -131,12 +131,22 @@
             <th
               class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
             >
-              Title
+              Cinema
             </th>
             <th
               class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
             >
-              Genre
+              Hall
+            </th>
+            <th
+              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+            >
+              Show Days
+            </th>
+            <th
+              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+            >
+              Show Time
             </th>
             <th
               class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
@@ -151,7 +161,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="movie in movies" :key="movie.id">
+          <tr v-for="movie in []" :key="movie.id">
             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
               <div class="flex items-center">
                 <div class="ml-3">

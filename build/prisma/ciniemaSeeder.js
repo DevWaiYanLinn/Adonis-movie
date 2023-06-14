@@ -25,7 +25,7 @@ const cinemaSeeder = async (prisma) => {
                 },
             },
             {
-                name: "Adonis Palnet",
+                name: "Adonis Planet",
                 location: {
                     city: "Yangon",
                     address: "Yangon",

@@ -13,7 +13,7 @@ type TUser = {
   firstName: string;
   lastName: string;
   password: string;
-  gender?: Gender;
+  gender: Gender;
   phoneNumber: string;
   address: string;
   dateOfBirth: Date;

@@ -45,7 +45,6 @@ export default {
 <script setup>
 import TextField from '@/components/TextField.vue'
 import {useForm} from '@inertiajs/vue3'
-const {errors} = defineProps(['errors'])
 const form = useForm({
   email: '',
   password: '',
@@ -53,10 +52,7 @@ const form = useForm({
 const toast = useToast();
 const login = () => {
   form.post('/admin/auth/login', {
-    headers: {
-      "accept": "application/json"
-    },
-    onError: errors => {
+     onError: errors => {
       if (errors.login) {
           toast.error('The credentials do not match our records')
       }

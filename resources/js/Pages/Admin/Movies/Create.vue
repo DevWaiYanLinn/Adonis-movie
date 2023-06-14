@@ -180,7 +180,7 @@ const form = useForm({
   duration:'',
   director:'',
   cast:'',
-  releaseDate:'',
+  releaseDate:null,
   description:'',
 })
 

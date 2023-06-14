@@ -86,12 +86,16 @@ model Row {
   createdAt DateTime @default(now()) @db.Timestamp
   updatedAt DateTime @updatedAt @db.Timestamp
 }
-
+enum SeatType {
+  Couple
+  Normal
+}
 model Seat {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   seatNumber String
   price      String?
   color      String?
+  seatType   SeatType @default(Normal)
   row        Row       @relation(fields: [rowID], references: [id])
   rowID      String    @db.ObjectId
   Booking    Booking[]
@@ -135,7 +139,7 @@ model ShowTime {
   movieID   String     @db.ObjectId
   movie     Movie      @relation(fields: [movieID], references: [id])
   Ticket    Ticket[]
-  movieTime DateTime[]
+  movieTime String[]   @default([])
   startDay  DateTime   @default(now()) @db.Timestamp
   endDay    DateTime   @default(now()) @db.Timestamp
   createdAt DateTime   @default(now()) @db.Timestamp

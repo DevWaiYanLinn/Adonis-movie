@@ -1,32 +1,41 @@
-import type { PrismaClient } from "@prisma/client";
+import type {PrismaClient} from "@prisma/client"
 
 const rowAndSeatSeeder = async (prisma: PrismaClient) => {
-  const seats = [...Array(20).keys()].map((seat) => {
-    return {
-      seatNumber: `${seat + 1}`,
-    };
-  });
-
+  const createSeat = (totalSeed, rowNumber) => {
+    return [...Array(totalSeed).keys()]
+      .map((seat): { seatNumber: string, seatType: 'Couple' | 'Normal' } => {
+        return {
+          seatNumber: `${seat + 1}`,
+          seatType: rowNumber === 'K' ? 'Couple' : 'Normal'
+        }
+      });
+  }
   const getPrice = (rowNumber: string) => {
     let price = 0;
     switch (rowNumber) {
       case "A":
-      case "B":
         price = 2000;
+        break;
+      case "B":
       case "C":
+        price = 3000;
+        break;
       case "D":
-        price = 4000;
       case "E":
+        price = 4000;
+        break;
       case "F":
-        price = 6000;
       case "G":
+        price = 5000;
+        break;
       case "H":
-        price = 8000;
       case "I":
       case "J":
-        price = 10000;
+        price = 7000;
+        break;
       default:
-        price = 1200;
+        price = 16000;
+        break;
     }
     return price;
   };
@@ -36,17 +45,17 @@ const rowAndSeatSeeder = async (prisma: PrismaClient) => {
   await Promise.all(
     halls.map(async (hall) => {
       await Promise.all(
-        rollNumbers.map(async (rowNumber) => {
+        rollNumbers.map(async (rowNumber, index) => {
           await prisma.row.create({
             data: {
               rowNumber,
               color: "red",
               price: getPrice(rowNumber),
               hall: {
-                connect: { id: hall.id },
+                connect: {id: hall.id},
               },
               seats: {
-                create: seats,
+                create: createSeat(rowNumber === 'K' ? 10 : 10 + (index * 2), rowNumber),
               },
             },
           });

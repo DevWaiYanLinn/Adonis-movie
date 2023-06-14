@@ -45,7 +45,12 @@ Route.group(() => {
   Route.post('/movies', "MoviesController.store")
   Route.get("/movies", "MoviesController.index");
 
+  Route.post("/movies/show-times", "ShowTimesController.store")
   Route.get("/movies/:id/show-times/create", "ShowTimesController.create")
+
+  Route.get('movies/seats/temp', ({inertia}) => {
+    return inertia.render('Admin/Movies/ShowTimes/Seats/Temp')
+  })
 
 })
   .prefix("/admin")

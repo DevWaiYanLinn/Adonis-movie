@@ -18,7 +18,7 @@ const hallSeeder = async (prisma) => {
             },
             {
                 name: `${cinema1.name} 4`,
-                cinemaID: cinema2.id,
+                cinemaID: cinema1.id,
             },
             {
                 name: `${cinema2.name} 1`,
